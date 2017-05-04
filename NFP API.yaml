@@ -1,0 +1,145 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: NFP Data transfer API
+host: api.nursefamilypartnership.org
+schemes:
+  - https
+basePath: /v1
+produces:
+  - application/json
+  - application/xml
+paths:
+  /post/Nurse:
+    post:
+      description: Posts a `Nurse` record to NFP
+      parameters:
+        - name: Nurse
+          in: body
+          description: Nurse add or update
+          required: true
+          schema:
+            $ref: '#/definitions/Nurse'
+      responses:
+        '200':
+          description: Successful response
+  /post/Assessment:
+    post:
+      description: Posts a `Assessment` to NFP
+      parameters:
+        - name: Assessment
+          in: body
+          description: Nurse add or update
+          required: true
+          schema:
+            $ref: '#/definitions/Assessment'
+      responses:
+        '200':
+          description: Successful response
+  /get/Pseudonym:
+    get:
+      description: Gets a list of Pseudonyms
+      parameters:
+        - name: Assessment
+          in: query
+          description: The name of the Assessment to return the pseudonyms for
+          type: string
+          required: true
+      responses:
+        '200':
+          description: An array of Pseudodyms
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Pseudonym'
+definitions:
+  Nurse:
+    type: object
+    required:
+      - Type_Of_Record
+      - Source_System_ID
+      - Agency_Source_System_ID
+      - First_Name
+      - Last_Name
+      - Date_Started
+    properties:
+      Type_Of_Record:
+        description: What type of record New or Update
+        type: string
+        enum:
+          - NEW
+          - UPDATE
+      Source_System_ID:
+        description: The unique identifier from the source system
+        type: string
+      Agency_Source_System_ID:
+        description: The unique identifier from the source system
+        type: string
+      First_Name:
+        type: string
+      Middle_Name:
+        type: string
+      Last_Name:
+        type: string
+      Date_Started:
+        type: string
+        format: full-date
+      Date_Ended:
+        type: string
+        format: full-date
+      Address:
+        type: object
+        properties:
+          Address_Line_1:
+            type: string
+          Address_Line_2:
+            type: string
+          Address_Line_3:
+            type: string
+          City:
+            type: string
+          State:
+            type: string
+          Zip:
+            type: string
+          Country:
+            type: string
+  Assessment:
+    type: object
+    required:
+      - Assessment
+      - Nurse_Source_System_ID
+      - Client_Source_System_ID
+      - Agency_Source_System_ID
+      - Assessment_Date
+      - Pseudonym_Responses
+    properties:
+      Assessment:
+        type: string
+      Nurse_Source_System_ID:
+        type: string
+      Client_Source_System_ID:
+        type: string
+      Agency_Source_System_ID:
+        type: string
+      Assessment_Date:
+        type: string
+        format: full-date
+      Pseudonym_Responses:
+        type: array
+        items:
+          $ref: '#/definitions/PseudonymResponse'
+  PseudonymResponse:
+    type: object
+    properties:
+      pseudonym:
+        type: string
+      pseudonym_response:
+        type: string
+  Pseudonym:
+    type: object
+    properties:
+      Pseudonym:
+        type: string
+      Data_type:
+        type: string
