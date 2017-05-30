@@ -26,6 +26,10 @@
           "200" : {
             "description" : "Successful response"
           }
+        },
+        "x-amazon-apigateway-integration" : {
+          "type" : "aws",
+          "uri" : "arn:aws:lambda:us-west-2:312517840624:function:postNursePOST"
         }
       }
     },
