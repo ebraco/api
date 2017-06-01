@@ -75,7 +75,7 @@
   "definitions" : {
     "Nurse" : {
       "type" : "object",
-      "required" : [ "Agency_Source_System_ID", "Email", "First_Name", "Last_Name", "NFP_Start_Date", "Nurse_ID", "Nursing_Degree", "Source_System_ID", "Type_Of_Record" ],
+      "required" : [ "Agency_Source_System_ID", "Email", "First_Name", "Last_Name", "Nurse_ID", "Nursing_Degree", "Source_System_ID", "Type_Of_Record" ],
       "properties" : {
         "Type_Of_Record" : {
           "type" : "string",
@@ -122,7 +122,8 @@
         },
         "Gender" : {
           "type" : "string",
-          "description" : "Nurse's Gender which can only be Male or Female"
+          "description" : "Nurse's Gender which can only be Male or Female",
+          "enum" : [ "Male", "Female" ]
         },
         "Ethnicity" : {
           "type" : "string",
