@@ -127,7 +127,8 @@
         },
         "Ethnicity" : {
           "type" : "string",
-          "description" : "Ethnicity of Nurse"
+          "description" : "Ethnicity of Nurse",
+          "enum" : [ "Hispanic or Latina", "Not Hispanic or Latina", "Declined to self-identify" ]
         },
         "Race" : {
           "type" : "string",
@@ -135,7 +136,8 @@
         },
         "Primary Language" : {
           "type" : "string",
-          "description" : "The primary language of the nurse."
+          "description" : "The primary language of the nurse.",
+          "enum" : [ "English", "Spanish", "Other" ]
         },
         "Nursing_Experience_Years" : {
           "type" : "integer",
@@ -159,7 +161,13 @@
         },
         "Nursing_Degree" : {
           "type" : "string",
-          "description" : "The highest level of degree in a nursing related field"
+          "description" : "The highest level of degree in a nursing related field",
+          "enum" : [ "Diploma", "Associate Degree", "Bachelors' Degree", "Master's Degree", "ND or DNP", "PhD or DNS", "Not applicable" ]
+        },
+        "Other_Degree" : {
+          "type" : "string",
+          "description" : "The highest level of degree in other field(s) outside of nursing",
+          "enum" : [ "Associate Degree", "Bachelors' Degree", "Master's Degree", "Professional Degree", "Doctorate Degree", "Not applicable" ]
         }
       }
     },
