@@ -75,7 +75,7 @@
   "definitions" : {
     "Nurse" : {
       "type" : "object",
-      "required" : [ "Agency_Source_System_ID", "First_Name", "Last_Name", "Nurse_ID", "Source_System_ID", "Type_Of_Record" ],
+      "required" : [ "Agency_Source_System_ID", "Email", "First_Name", "Last_Name", "NFP_Start_Date", "Nurse_ID", "Source_System_ID", "Type_Of_Record" ],
       "properties" : {
         "Type_Of_Record" : {
           "type" : "string",
@@ -125,19 +125,40 @@
           "description" : "Nurse's Gender which can only be Male or Female"
         },
         "Ethnicity" : {
-          "type" : "string"
+          "type" : "string",
+          "description" : "Ethnicity of Nurse"
         },
         "Race" : {
-          "type" : "string"
+          "type" : "string",
+          "description" : "Nurse's Race, can be more than 1"
         },
         "Primary Language" : {
-          "type" : "string"
+          "type" : "string",
+          "description" : "The primary language of the nurse."
         },
-        "Supervisor_Experience_years" : {
-          "type" : "integer"
+        "Nursing_Experience_Years" : {
+          "type" : "integer",
+          "description" : "The number of year(s) the nurse has practiced nursing"
+        },
+        "Maternal_Health_Experience_Years" : {
+          "type" : "integer",
+          "description" : "The number of year(s) the nurse has worked with maternal health populations"
+        },
+        "Public_Community_Experience_Years" : {
+          "type" : "integer",
+          "description" : "The number of year(s) the nurse has worked in public or community health"
+        },
+        "Supervisor_Experience_Years" : {
+          "type" : "integer",
+          "description" : "The number of year(s) the nurse has been in a supervisory role"
         },
         "Birth_Year" : {
-          "type" : "integer"
+          "type" : "integer",
+          "description" : "The year the nurse was born"
+        },
+        "Nursing_Degree" : {
+          "type" : "string",
+          "description" : "The highest level of degree in a nursing related field"
         }
       }
     },
