@@ -174,7 +174,7 @@
           "type" : "string"
         },
         "Address_Line_3" : {
-          "type" : "integer"
+          "type" : "string"
         },
         "City" : {
           "type" : "string"
