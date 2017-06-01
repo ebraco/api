@@ -75,7 +75,7 @@
   "definitions" : {
     "Nurse" : {
       "type" : "object",
-      "required" : [ "Agency_Source_System_ID", "Date_Started", "First_Name", "Last_Name", "Source_System_ID", "Type_Of_Record" ],
+      "required" : [ "Agency_Source_System_ID", "Date_Started", "First_Name", "Last_Name", "Nurse_ID", "Source_System_ID", "Type_Of_Record" ],
       "properties" : {
         "Type_Of_Record" : {
           "type" : "string",
@@ -89,6 +89,9 @@
         "Agency_Source_System_ID" : {
           "type" : "string",
           "description" : "The unique identifier from the source system"
+        },
+        "Nurse_ID" : {
+          "type" : "string"
         },
         "First_Name" : {
           "type" : "string"
@@ -107,8 +110,26 @@
           "type" : "string",
           "format" : "full-date"
         },
-        "Address" : {
-          "$ref" : "#/definitions/Nurse_Address"
+        "Email" : {
+          "type" : "string"
+        },
+        "Gender" : {
+          "type" : "string"
+        },
+        "Ethnicity" : {
+          "type" : "string"
+        },
+        "Race" : {
+          "type" : "string"
+        },
+        "Primary Language" : {
+          "type" : "string"
+        },
+        "Supervisor_Experience_years" : {
+          "type" : "integer"
+        },
+        "Birth_Year" : {
+          "type" : "integer"
         }
       }
     },
@@ -161,31 +182,6 @@
           "type" : "string"
         },
         "Description" : {
-          "type" : "string"
-        }
-      }
-    },
-    "Nurse_Address" : {
-      "properties" : {
-        "Address_Line_1" : {
-          "type" : "string"
-        },
-        "Address_Line_2" : {
-          "type" : "string"
-        },
-        "Address_Line_3" : {
-          "type" : "string"
-        },
-        "City" : {
-          "type" : "string"
-        },
-        "State" : {
-          "type" : "string"
-        },
-        "Zip" : {
-          "type" : "string"
-        },
-        "Country" : {
           "type" : "string"
         }
       }
