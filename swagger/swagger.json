@@ -181,6 +181,9 @@
         "Address_Line_3" : {
           "type" : "string"
         },
+        "Address_Line_4" : {
+          "type" : "string"
+        },
         "City" : {
           "type" : "string"
         },
