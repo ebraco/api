@@ -75,7 +75,7 @@
   "definitions" : {
     "Nurse" : {
       "type" : "object",
-      "required" : [ "Agency_Source_System_ID", "Date_Started", "First_Name", "Last_Name", "Nurse_ID", "Source_System_ID", "Type_Of_Record" ],
+      "required" : [ "Agency_Source_System_ID", "First_Name", "Last_Name", "Nurse_ID", "Source_System_ID", "Type_Of_Record" ],
       "properties" : {
         "Type_Of_Record" : {
           "type" : "string",
@@ -91,30 +91,38 @@
           "description" : "The unique identifier from the source system"
         },
         "Nurse_ID" : {
-          "type" : "string"
+          "type" : "string",
+          "description" : "Unique NPF Nurse Identifier"
         },
         "First_Name" : {
-          "type" : "string"
+          "type" : "string",
+          "description" : "Nurse's First Name"
         },
         "Middle_Name" : {
-          "type" : "string"
+          "type" : "string",
+          "description" : "Nurse's Middle Name"
         },
         "Last_Name" : {
-          "type" : "string"
-        },
-        "Date_Started" : {
           "type" : "string",
-          "format" : "full-date"
+          "description" : "Nurse's Last Name"
         },
-        "Date_Ended" : {
+        "NFP_Start_Date" : {
           "type" : "string",
-          "format" : "full-date"
+          "format" : "full-date",
+          "description" : "Date Nurse Started at NFP"
+        },
+        "NFP_End_Date" : {
+          "type" : "string",
+          "format" : "full-date",
+          "description" : "Date Nurse Ended work at NFP"
         },
         "Email" : {
-          "type" : "string"
+          "type" : "string",
+          "description" : "Nurse's email address"
         },
         "Gender" : {
-          "type" : "string"
+          "type" : "string",
+          "description" : "Nurse's Gender which can only be Male or Female"
         },
         "Ethnicity" : {
           "type" : "string"
