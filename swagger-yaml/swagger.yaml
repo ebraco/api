@@ -1,7 +1,7 @@
 ---
 swagger: "2.0"
 info:
-  version: "1.0.1"
+  version: "1.0.2"
   title: "NFP Data transfer API"
 host: "virtserver.swaggerhub.com"
 basePath: "/NurseFamilyPartnership/NFP_DW_DC_Interface/1.0.0"
@@ -49,6 +49,19 @@ paths:
         required: true
         schema:
           $ref: "#/definitions/Assessment"
+      responses:
+        200:
+          description: "Successful response"
+  /post/Agency:
+    post:
+      description: "Posts `Agency` to NFP"
+      parameters:
+      - in: "body"
+        name: "Agency"
+        description: "Agency add or update"
+        required: true
+        schema:
+          $ref: "#/definitions/Agency"
       responses:
         200:
           description: "Successful response"
@@ -309,6 +322,73 @@ definitions:
         type: "array"
         items:
           $ref: "#/definitions/PseudonymResponse"
+  Agency:
+    type: "object"
+    required:
+    - "AGENCY_DATE_FIRST_HOME_VISIT"
+    - "AGENCY_INFO_0_NAME"
+    - "AGENCY_INFO_1_INITIATION_DATE"
+    - "AGENCY_INFO_1_LOWINCOME_CRITERA"
+    - "AGENCY_INFO_1_LOWINCOME_DESCRIPTION"
+    - "AGENCY_INFO_1_LOWINCOME_PERCENT"
+    - "AGENCY_INFO_1_TYPE"
+    - "Phone1"
+    - "SiteID"
+    - "Site_Name"
+    properties:
+      SiteID:
+        type: "string"
+        description: "Unique ID assigned to each Implementing Agency"
+      AGENCY_INFO_0_NAME:
+        type: "string"
+        description: "Name of Implementing Agency"
+      Site_Name:
+        type: "string"
+        description: "Name of Implementing Agency"
+      Address:
+        $ref: "#/definitions/Agency_Address"
+      Phone1:
+        type: "number"
+        description: "Agency's Phone number"
+      AGENCY_INFO_1_TYPE:
+        type: "string"
+        description: "Type of Organization"
+        enum:
+        - "Public Health"
+        - "Agency or Clinic"
+        - "Hospital"
+        - "Community Based Organization"
+      AGENCY_INFO_1_LOWINCOME_CRITERA:
+        type: "string"
+        description: "Low-income criteria used for eligibility"
+      AGENCY_INFO_1_LOWINCOME_PERCENT:
+        type: "string"
+        description: "Low-income criteria used for eligibility"
+      AGENCY_INFO_1_LOWINCOME_DESCRIPTION:
+        type: "string"
+        description: "Low-income criteria used for eligibility"
+      AGENCY_INFO_1_WEBSITE:
+        type: "string"
+        description: "Implementing Agency Website"
+      SERVICE_LEVEL_COVERED:
+        type: "string"
+        description: "Service level Implementing Agency Covers"
+        enum:
+        - "City"
+        - "County"
+        - "Parish"
+        - "Region"
+        - "Tribe"
+      COUNTIES_SERVED:
+        type: "string"
+      AGENCY_INFO_1_INITIATION_DATE:
+        type: "string"
+        format: "full-date"
+        description: "Date Implementing Agency began implementing NFP"
+      AGENCY_DATE_FIRST_HOME_VISIT:
+        type: "string"
+        format: "full-date"
+        description: "Date of the first home visit at that Implementing Agency"
   PseudonymResponse:
     type: "object"
     properties:
@@ -342,4 +422,21 @@ definitions:
       Zip_Code:
         type: "string"
         description: "Client's Zipcode/PostalCode"
+  Agency_Address:
+    properties:
+      Address_1:
+        type: "string"
+        description: "Agency's street address"
+      Address_2:
+        type: "string"
+        description: "Agency's extended address which could include apt"
+      City:
+        type: "string"
+        description: "Agency's city of business"
+      State:
+        type: "string"
+        description: "Agency's state of business"
+      ZipCode:
+        type: "string"
+        description: "Agency's Zipcode/PostalCode"
 x-aws-api-id: "9oruq6e1w0"
