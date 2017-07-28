@@ -12,7 +12,18 @@ import scala.reflect.ClassTag
 object EnumsSerializers {
 
   def all = Seq[Serializer[_]]() :+
-    new EnumNameSerializer(NurseEnums.TypeOfRecord)
+    new EnumNameSerializer(AgencyEnums.AGENCYINFO1TYPE) :+
+    new EnumNameSerializer(AgencyEnums.SERVICELEVELCOVERED) :+
+    new EnumNameSerializer(ClientEnums.TypeOfRecord) :+
+    new EnumNameSerializer(ClientEnums.Ethnicity) :+
+    new EnumNameSerializer(NurseEnums.TypeOfRecord) :+
+    new EnumNameSerializer(NurseEnums.Gender) :+
+    new EnumNameSerializer(NurseEnums.Ethnicity) :+
+    new EnumNameSerializer(NurseEnums.&#x60;Primary Language&#x60;) :+
+    new EnumNameSerializer(NurseEnums.NursingDegree) :+
+    new EnumNameSerializer(NurseEnums.OtherDegree) :+
+    new EnumNameSerializer(NurseEnums.PrimaryRole) :+
+    new EnumNameSerializer(NurseEnums.SecondaryRole)
 
 
 

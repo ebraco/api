@@ -12,24 +12,131 @@ import org.joda.time.DateTime
 case class Nurse (
   /* What type of record New or Update */
   typeOfRecord: NurseEnums.TypeOfRecord,
-  /* The unique identifier from the source system */
-  sourceSystemID: String,
+  /* Unique NPF Nurse Identifier, Pseudonym = */
+  nurseSourceSystemID: String,
   /* The unique identifier from the source system */
   agencySourceSystemID: String,
+  /* Nurse's First Name */
   firstName: String,
+  /* Nurse's Middle Name */
   middleName: Option[String],
+  /* Nurse's Last Name */
   lastName: String,
-  dateStarted: String,
-  dateEnded: Option[String],
-  address: Option[Nurse_Address]
+  /* Date Nurse Started at NFP - pseudonym = */
+  nFPStartDate: Option[String],
+  /* Date Nurse Ended work at NFP - pseudonym = NURSE_STATUS_0_CHANGE_TERMINATE_DATE */
+  nFPEndDate: Option[String],
+  /* Nurse's email address */
+  email: String,
+  /* Nurse's Gender which can only be Male or Female - pseudonym = NURSE_0_GENDER */
+  gender: Option[NurseEnums.Gender],
+  /* Ethnicity of Nurse  - pseudonym = NURSE_0_ETHNICITY */
+  ethnicity: Option[NurseEnums.Ethnicity],
+  /* Nurse's Race, can be more than 1 - pseudonym = NURSE_1_RACE_0,NURSE_1_RACE_1,NURSE_1_RACE_3,NURSE_1_RACE_4,NURSE_1_RACE_5 */
+  race: Option[Seq[Null]],
+  /* The primary language of the nurse.  - pseudonym = NURSE_0_LANGUAGE */
+  `primary Language`: Option[NurseEnums.&#x60;Primary Language&#x60;],
+  /* The number of year(s) the nurse has practiced nursing  - pseudonym = NURSE_0_YEAR_NURSING_EXPERIENCE */
+  nursingExperienceYears: Option[Int],
+  /* The number of year(s) the nurse has worked with maternal health populations - pseudonym = NURSE_0_YEAR_MATERNAL_EXPERIENCE */
+  maternalHealthExperienceYears: Option[Int],
+  /* The number of year(s) the nurse has worked in public or community health - pseudonym = NURSE_0_YEAR_COMMHEALTH_EXPERIENCE */
+  publicCommunityExperienceYears: Option[Int],
+  /* The number of year(s) the nurse has been in a supervisory role - pseudonym = NURSE_0_YEAR_SUPERVISOR_EXPERIENCE */
+  supervisorExperienceYears: Option[Int],
+  /* The year the nurse was born - pseudonym = NURSE_0_BIRTH_YEAR */
+  birthYear: Option[Int],
+  /* The highest level of degree in a nursing related field - pseudonym = NURSE_EDUCATION_0_NURSING_DEGREES */
+  nursingDegree: NurseEnums.NursingDegree,
+  /* The highest level of degree in other field(s) outside of nursing - pseudonym = NURSE_EDUCATION_1_OTHER_DEGREES */
+  otherDegree: Option[NurseEnums.OtherDegree],
+  /* The main role of the nurse in the NHP program - pseudonym = NURSE_PRIMARY_ROLE */
+  primaryRole: Option[NurseEnums.PrimaryRole],
+  /* The nurse's secondary role in the NHP program - pseudonym = NURSE_SECONDARY_ROLE */
+  secondaryRole: Option[NurseEnums.SecondaryRole],
+  /* FTE associated with the nurse's Primary Role - pseudonym = NURSE_PRIMARY_ROLE_FTE */
+  fTEPrimaryRole: Option[Int],
+  /* FTE associated with the nurse's Secondary Role - pseudonym = NURSE_SECONDARY_ROLE_FTE */
+  fTESecondaryRole: Option[Int],
+  /* The date a nurse changes to a new role - pseudonym = NURSE_STATUS_0_CHANGE_START_DATE */
+  roleStartDate: Option[String]
 ) extends ApiModel
 
 object NurseEnums {
 
   type TypeOfRecord = TypeOfRecord.Value
+  type Gender = Gender.Value
+  type Ethnicity = Ethnicity.Value
+  type &#x60;Primary Language&#x60; = &#x60;Primary Language&#x60;.Value
+  type NursingDegree = NursingDegree.Value
+  type OtherDegree = OtherDegree.Value
+  type PrimaryRole = PrimaryRole.Value
+  type SecondaryRole = SecondaryRole.Value
   object TypeOfRecord extends Enumeration {
     val `NEW` = Value("NEW")
     val UPDATE = Value("UPDATE")
+  }
+
+  object Gender extends Enumeration {
+    val Male = Value("Male")
+    val Female = Value("Female")
+  }
+
+  object Ethnicity extends Enumeration {
+    val `Hispanic or Latina` = Value("Hispanic or Latina")
+    val `Not Hispanic or Latina` = Value("Not Hispanic or Latina")
+    val `Declined to self-identify` = Value("Declined to self-identify")
+  }
+
+  object &#x60;Primary Language&#x60; extends Enumeration {
+    val English = Value("English")
+    val Spanish = Value("Spanish")
+    val Other = Value("Other")
+  }
+
+  object NursingDegree extends Enumeration {
+    val Diploma = Value("Diploma")
+    val `Associate Degree` = Value("Associate Degree")
+    val `Bachelors&#39; Degree` = Value("Bachelors&#39; Degree")
+    val `Master&#39;s Degree` = Value("Master&#39;s Degree")
+    val `ND or DNP` = Value("ND or DNP")
+    val `PhD or DNS` = Value("PhD or DNS")
+    val `Not applicable` = Value("Not applicable")
+  }
+
+  object OtherDegree extends Enumeration {
+    val `Associate Degree` = Value("Associate Degree")
+    val `Bachelors&#39; Degree` = Value("Bachelors&#39; Degree")
+    val `Master&#39;s Degree` = Value("Master&#39;s Degree")
+    val `Professional Degree` = Value("Professional Degree")
+    val `Doctorate Degree` = Value("Doctorate Degree")
+    val `Not applicable` = Value("Not applicable")
+  }
+
+  object PrimaryRole extends Enumeration {
+    val `Nurse Supervisor` = Value("Nurse Supervisor")
+    val `Nurse Home Visitor` = Value("Nurse Home Visitor")
+    val `Data EntryAdministrative` = Value("Data Entry/Administrative")
+    val `Agency Administrator` = Value("Agency Administrator")
+    val `State Administrator` = Value("State Administrator")
+    val `State Nurse Consultant` = Value("State Nurse Consultant")
+    val `Program CoordinatorManager` = Value("Program Coordinator/Manager")
+    val `NFP Partner` = Value("NFP Partner")
+    val `Agency Other` = Value("Agency Other")
+    val Other = Value("Other")
+  }
+
+  object SecondaryRole extends Enumeration {
+    val `Nurse Supervisor` = Value("Nurse Supervisor")
+    val `Nurse Home Visitor` = Value("Nurse Home Visitor")
+    val `Data EntryAdministrative` = Value("Data Entry/Administrative")
+    val `Agency Administrator` = Value("Agency Administrator")
+    val `State Administrator` = Value("State Administrator")
+    val `State Nurse Consultant` = Value("State Nurse Consultant")
+    val `Program CoordinatorManager` = Value("Program Coordinator/Manager")
+    val `NFP Partner` = Value("NFP Partner")
+    val `Agency Other` = Value("Agency Other")
+    val Other = Value("Other")
   }
 
 }

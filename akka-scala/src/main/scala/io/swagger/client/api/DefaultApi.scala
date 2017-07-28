@@ -5,7 +5,9 @@
  */
 package io.swagger.client.api
 
+import io.swagger.client.model.Agency
 import io.swagger.client.model.Assessment
+import io.swagger.client.model.Client
 import io.swagger.client.model.Nurse
 import io.swagger.client.model.Pseudonym
 import io.swagger.client.core._
@@ -27,6 +29,18 @@ object DefaultApi {
       .withQueryParam("Assessment", assessment)
       .withSuccessResponse[Seq[Pseudonym]](200)
         /**
+   * Posts &#x60;Agency&#x60; to NFP
+   * 
+   * Expected answers:
+   *   code 200 :  (Successful response)
+   * 
+   * @param agency Agency add or update
+   */
+  def postAgencyPost(agency: Agency): ApiRequest[Unit] =
+    ApiRequest[Unit](ApiMethods.POST, "https://virtserver.swaggerhub.com/NurseFamilyPartnership/NFP_DW_DC_Interface/1.0.0", "/post/Agency", "application/json")
+      .withBody(agency)
+      .withSuccessResponse[Unit](200)
+        /**
    * Posts a &#x60;Assessment&#x60; to NFP
    * 
    * Expected answers:
@@ -37,6 +51,18 @@ object DefaultApi {
   def postAssessmentPost(assessment: Assessment): ApiRequest[Unit] =
     ApiRequest[Unit](ApiMethods.POST, "https://virtserver.swaggerhub.com/NurseFamilyPartnership/NFP_DW_DC_Interface/1.0.0", "/post/Assessment", "application/json")
       .withBody(assessment)
+      .withSuccessResponse[Unit](200)
+        /**
+   * Posts a &#x60;Client&#x60; record to NFP
+   * 
+   * Expected answers:
+   *   code 200 :  (Successful response)
+   * 
+   * @param client Client add or update
+   */
+  def postClientPost(client: Client): ApiRequest[Unit] =
+    ApiRequest[Unit](ApiMethods.POST, "https://virtserver.swaggerhub.com/NurseFamilyPartnership/NFP_DW_DC_Interface/1.0.0", "/post/Client", "application/json")
+      .withBody(client)
       .withSuccessResponse[Unit](200)
         /**
    * Posts a &#x60;Nurse&#x60; record to NFP

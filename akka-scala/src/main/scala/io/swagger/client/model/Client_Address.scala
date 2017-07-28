@@ -9,14 +9,17 @@ package io.swagger.client.model
 import io.swagger.client.core.ApiModel
 import org.joda.time.DateTime
 
-case class Assessment (
-  assessmentID: String,
-  assessment: String,
-  nurseSourceSystemID: String,
-  clientSourceSystemID: String,
-  agencySourceSystemID: String,
-  assessmentDate: String,
-  pseudonymResponses: Seq[PseudonymResponse]
+case class Client_Address (
+  /* Client's street address */
+  address1: Option[String],
+  /* Client's extended address which could include apt */
+  address2: Option[String],
+  /* Client's city of residence */
+  city: Option[String],
+  /* Client's state of residence */
+  state: Option[String],
+  /* Client's Zipcode/PostalCode */
+  zipCode: Option[String]
 ) extends ApiModel
 
 
