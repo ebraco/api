@@ -32,9 +32,9 @@ case class Nurse (
   gender: Option[NurseEnums.Gender],
   /* Ethnicity of Nurse  - pseudonym = NURSE_0_ETHNICITY */
   ethnicity: Option[NurseEnums.Ethnicity],
-  /* Nurse's Race, can be more than 1 - pseudonym = NURSE_1_RACE_0,NURSE_1_RACE_1,NURSE_1_RACE_3,NURSE_1_RACE_4,NURSE_1_RACE_5 */
+  /* Nurse's Race, can be more than one - pseudonym = NURSE_1_RACE_0,NURSE_1_RACE_1,NURSE_1_RACE_3,NURSE_1_RACE_4,NURSE_1_RACE_5 */
   race: Option[Seq[Null]],
-  /* The primary language of the nurse.  - pseudonym = NURSE_0_LANGUAGE */
+  /* Testing */
   `primary Language`: Option[NurseEnums.&#x60;Primary Language&#x60;],
   /* The number of year(s) the nurse has practiced nursing  - pseudonym = NURSE_0_YEAR_NURSING_EXPERIENCE */
   nursingExperienceYears: Option[Int],
