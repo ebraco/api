@@ -19,7 +19,7 @@ object EnumsSerializers {
     new EnumNameSerializer(NurseEnums.TypeOfRecord) :+
     new EnumNameSerializer(NurseEnums.Gender) :+
     new EnumNameSerializer(NurseEnums.Ethnicity) :+
-    new EnumNameSerializer(NurseEnums.&#x60;Primary Language&#x60;) :+
+    new EnumNameSerializer(NurseEnums.PrimaryLanguage) :+
     new EnumNameSerializer(NurseEnums.NursingDegree) :+
     new EnumNameSerializer(NurseEnums.OtherDegree) :+
     new EnumNameSerializer(NurseEnums.PrimaryRole) :+

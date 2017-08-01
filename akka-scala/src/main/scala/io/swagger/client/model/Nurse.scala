@@ -32,10 +32,10 @@ case class Nurse (
   gender: Option[NurseEnums.Gender],
   /* Ethnicity of Nurse  - pseudonym = NURSE_0_ETHNICITY */
   ethnicity: Option[NurseEnums.Ethnicity],
-  /* Nurse's Race, can be more than one - pseudonym = NURSE_1_RACE_0,NURSE_1_RACE_1,NURSE_1_RACE_3,NURSE_1_RACE_4,NURSE_1_RACE_5 */
+  /* Nurse's Race, can be more than 1 - pseudonym = NURSE_1_RACE_0,NURSE_1_RACE_1,NURSE_1_RACE_3,NURSE_1_RACE_4,NURSE_1_RACE_5 */
   race: Option[Seq[Null]],
-  /* Testing */
-  `primary Language`: Option[NurseEnums.&#x60;Primary Language&#x60;],
+  /* The primary language of the nurse.  - pseudonym = NURSE_0_LANGUAGE */
+  primaryLanguage: Option[NurseEnums.PrimaryLanguage],
   /* The number of year(s) the nurse has practiced nursing  - pseudonym = NURSE_0_YEAR_NURSING_EXPERIENCE */
   nursingExperienceYears: Option[Int],
   /* The number of year(s) the nurse has worked with maternal health populations - pseudonym = NURSE_0_YEAR_MATERNAL_EXPERIENCE */
@@ -67,7 +67,7 @@ object NurseEnums {
   type TypeOfRecord = TypeOfRecord.Value
   type Gender = Gender.Value
   type Ethnicity = Ethnicity.Value
-  type &#x60;Primary Language&#x60; = &#x60;Primary Language&#x60;.Value
+  type PrimaryLanguage = PrimaryLanguage.Value
   type NursingDegree = NursingDegree.Value
   type OtherDegree = OtherDegree.Value
   type PrimaryRole = PrimaryRole.Value
@@ -88,7 +88,7 @@ object NurseEnums {
     val `Declined to self-identify` = Value("Declined to self-identify")
   }
 
-  object &#x60;Primary Language&#x60; extends Enumeration {
+  object PrimaryLanguage extends Enumeration {
     val English = Value("English")
     val Spanish = Value("Spanish")
     val Other = Value("Other")
