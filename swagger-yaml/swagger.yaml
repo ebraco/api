@@ -4,7 +4,6 @@ info:
   description: "The data collection interface for NFP."
   version: "1.0.3"
   title: "NFP Data transfer API"
-host: "api.nursefamilypartnership.org"
 basePath: "/v1"
 schemes:
 - "https"
