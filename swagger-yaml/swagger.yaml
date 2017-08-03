@@ -3,6 +3,7 @@ swagger: "2.0"
 info:
   version: "1.0.3"
   title: "NFP Data transfer API"
+host: "api.nursefamilypartnership.org"
 schemes:
 - "https"
 consumes:
