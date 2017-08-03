@@ -1,87 +1,302 @@
 ---
 swagger: "2.0"
 info:
-  description: "The data collection interface for NFP."
   version: "1.0.3"
   title: "NFP Data transfer API"
-host: "api.nursefamilypartnership.org"
-basePath: "/v1"
+host: "m9y2ugvet0.execute-api.us-west-2.amazonaws.com"
+basePath: "/Beta"
 schemes:
 - "https"
-consumes:
-- "application/json"
-produces:
-- "application/json"
 paths:
-  /post/Nurse:
-    post:
-      description: "Posts a `Nurse` record to NFP"
+  /get/Pseudonym:
+    get:
+      produces:
+      - "application/json"
       parameters:
-      - in: "body"
-        name: "Nurse"
-        description: "Nurse add or update"
+      - name: "Assessment"
+        in: "query"
         required: true
-        schema:
-          $ref: "#/definitions/Nurse"
+        type: "string"
       responses:
         200:
-          description: "Successful response"
-  /post/Client:
-    post:
-      description: "Posts a `Client` record to NFP"
-      parameters:
-      - in: "body"
-        name: "Client"
-        description: "Client add or update"
-        required: true
-        schema:
-          $ref: "#/definitions/Client"
-      responses:
-        200:
-          description: "Successful response"
-  /post/Assessment:
-    post:
-      description: "Posts a `Assessment` to NFP"
-      parameters:
-      - in: "body"
-        name: "Assessment"
-        description: "Nurse add or update"
-        required: true
-        schema:
-          $ref: "#/definitions/Assessment"
-      responses:
-        200:
-          description: "Successful response"
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ArrayOfPseudonym"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        uri: "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:312517840624:function:get_test/invocations"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
   /post/Agency:
     post:
-      description: "Posts `Agency` to NFP"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
       parameters:
       - in: "body"
         name: "Agency"
-        description: "Agency add or update"
         required: true
         schema:
           $ref: "#/definitions/Agency"
       responses:
         200:
-          description: "Successful response"
-  /get/Pseudonym:
-    get:
-      description: "Gets a list of Pseudonyms"
+          description: "200 response"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestTemplates:
+          application/json: "{\"statusCode\": 200}"
+        passthroughBehavior: "when_no_match"
+        type: "mock"
+  /post/Assessment:
+    post:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
       parameters:
-      - name: "Assessment"
-        in: "query"
-        description: "The name of the Assessment to return the pseudonyms for"
+      - in: "body"
+        name: "Assessment"
         required: true
-        type: "string"
+        schema:
+          $ref: "#/definitions/Assessment"
       responses:
         200:
-          description: "An array of Pseudodyms for other api calls"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/Pseudonym"
+          description: "200 response"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestTemplates:
+          application/json: "{\"statusCode\": 200}"
+        passthroughBehavior: "when_no_match"
+        type: "mock"
+  /post/Client:
+    post:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Client"
+        required: true
+        schema:
+          $ref: "#/definitions/Client"
+      responses:
+        200:
+          description: "200 response"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestTemplates:
+          application/json: "{\"statusCode\": 200}"
+        passthroughBehavior: "when_no_match"
+        type: "mock"
+  /post/Nurse:
+    post:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Nurse"
+        required: true
+        schema:
+          $ref: "#/definitions/Nurse"
+      responses:
+        200:
+          description: "200 response"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestTemplates:
+          application/json: "{\"statusCode\": 200}"
+        passthroughBehavior: "when_no_match"
+        type: "mock"
 definitions:
+  Agency:
+    type: "object"
+    required:
+    - "AGENCY_DATE_FIRST_HOME_VISIT"
+    - "AGENCY_INFO_0_NAME"
+    - "AGENCY_INFO_1_INITIATION_DATE"
+    - "AGENCY_INFO_1_LOWINCOME_CRITERA"
+    - "AGENCY_INFO_1_LOWINCOME_DESCRIPTION"
+    - "AGENCY_INFO_1_LOWINCOME_PERCENT"
+    - "AGENCY_INFO_1_TYPE"
+    - "Phone1"
+    - "SiteID"
+    - "Site_Name"
+    properties:
+      SiteID:
+        type: "string"
+        description: "Unique ID assigned to each Implementing Agency"
+      AGENCY_INFO_0_NAME:
+        type: "string"
+        description: "Name of Implementing Agency"
+      Site_Name:
+        type: "string"
+        description: "Name of Implementing Agency"
+      Address:
+        $ref: "#/definitions/Agency_Address"
+      Phone1:
+        type: "number"
+        description: "Agency's Phone number"
+      AGENCY_INFO_1_TYPE:
+        type: "string"
+        description: "Type of Organization"
+        enum:
+        - "Public Health"
+        - "Agency or Clinic"
+        - "Hospital"
+        - "Community Based Organization"
+      AGENCY_INFO_1_LOWINCOME_CRITERA:
+        type: "string"
+        description: "Low-income criteria used for eligibility"
+      AGENCY_INFO_1_LOWINCOME_PERCENT:
+        type: "string"
+        description: "Low-income criteria used for eligibility"
+      AGENCY_INFO_1_LOWINCOME_DESCRIPTION:
+        type: "string"
+        description: "Low-income criteria used for eligibility"
+      AGENCY_INFO_1_WEBSITE:
+        type: "string"
+        description: "Implementing Agency Website"
+      SERVICE_LEVEL_COVERED:
+        type: "string"
+        description: "Service level Implementing Agency Covers"
+        enum:
+        - "City"
+        - "County"
+        - "Parish"
+        - "Region"
+        - "Tribe"
+      COUNTIES_SERVED:
+        type: "string"
+      AGENCY_INFO_1_INITIATION_DATE:
+        type: "string"
+        format: "full-date"
+        description: "Date Implementing Agency began implementing NFP"
+      AGENCY_DATE_FIRST_HOME_VISIT:
+        type: "string"
+        format: "full-date"
+        description: "Date of the first home visit at that Implementing Agency"
+  ArrayOfPseudonym:
+    type: "array"
+    items:
+      $ref: "#/definitions/Pseudonym"
+  Assessment:
+    type: "object"
+    required:
+    - "Agency_Source_System_ID"
+    - "Assessment"
+    - "Assessment_Date"
+    - "Assessment_ID"
+    - "Client_Source_System_ID"
+    - "Nurse_Source_System_ID"
+    - "Pseudonym_Responses"
+    properties:
+      Assessment_ID:
+        type: "string"
+      Assessment:
+        type: "string"
+      Nurse_Source_System_ID:
+        type: "string"
+      Client_Source_System_ID:
+        type: "string"
+      Agency_Source_System_ID:
+        type: "string"
+      Assessment_Date:
+        type: "string"
+        format: "full-date"
+      Pseudonym_Responses:
+        type: "array"
+        items:
+          $ref: "#/definitions/PseudonymResponse"
+  PseudonymResponse:
+    type: "object"
+    properties:
+      Pseudonym:
+        type: "string"
+      Pseudonym_Response:
+        type: "string"
+  Client:
+    type: "object"
+    required:
+    - "Agency_Source_System_ID"
+    - "Client_Source_System_ID"
+    - "First_Name"
+    - "Last_Name"
+    - "Type_Of_Record"
+    properties:
+      Type_Of_Record:
+        type: "string"
+        description: "What type of record New or Update"
+        enum:
+        - "NEW"
+        - "UPDATE"
+      Client_Source_System_ID:
+        type: "string"
+        description: "Unique NPF Client Identifier - pseudonym = CL_EN_GEN_ID"
+      Agency_Source_System_ID:
+        type: "string"
+        description: "The unique identifier from the source system - pseudonym = CLIENT_0_ID_AGENCY"
+      First_Name:
+        type: "string"
+        description: "Client's First Name"
+      Last_Name:
+        type: "string"
+        description: "Client's Last Name"
+      Client_DOB:
+        type: "string"
+        format: "full-date"
+        description: "Client's Date of Birth"
+      Client_SSN:
+        type: "integer"
+        description: "Client's Social Security Number"
+      Address:
+        $ref: "#/definitions/Client_Address"
+      Email:
+        type: "string"
+        description: "Client's Address"
+      Home_Phone:
+        type: "number"
+        description: "Client's Home Phone Number"
+      Work_phone:
+        type: "number"
+        description: "Client's Work Phone Number"
+      Cell_Phone:
+        type: "number"
+        description: "Client's Cell Phone Number - pseudonym = REFERRAL_PROSPECT_DEMO_1_CELL"
+      Client_EDD:
+        type: "string"
+        format: "full-date"
+        description: "Client's estimated due date  - pseudonym = REFERRAL_PROSPECT_DEMO_1_EDD"
+      Primary_Language:
+        type: "string"
+        description: "Client's primary language - pseudonym = DEMO_CLIENT_INTAKE_0_LANGUAGE"
+      Ethnicity:
+        type: "string"
+        description: "Client's Ethnicity - pseudonym = DEMO_CLIENT_INTAKE_0_ETHNICITY"
+        enum:
+        - "Hispanic or Latina"
+        - "Not Hispanic or Latina"
+        - "Declined to self-identify"
+      Race:
+        type: "array"
+        description: "Client's race, can be more than one - pseudonym = DEMO_CLIENT_INTAKE_0_RACE"
+        items:
+          type: "string"
   Nurse:
     type: "object"
     required:
@@ -234,175 +449,6 @@ definitions:
         type: "string"
         format: "full-date"
         description: "The date a nurse changes to a new role - pseudonym = NURSE_STATUS_0_CHANGE_START_DATE"
-  Client:
-    type: "object"
-    required:
-    - "Agency_Source_System_ID"
-    - "Client_Source_System_ID"
-    - "First_Name"
-    - "Last_Name"
-    - "Type_Of_Record"
-    properties:
-      Type_Of_Record:
-        type: "string"
-        description: "What type of record New or Update"
-        enum:
-        - "NEW"
-        - "UPDATE"
-      Client_Source_System_ID:
-        type: "string"
-        description: "Unique NPF Client Identifier - pseudonym = CL_EN_GEN_ID"
-      Agency_Source_System_ID:
-        type: "string"
-        description: "The unique identifier from the source system - pseudonym = CLIENT_0_ID_AGENCY"
-      First_Name:
-        type: "string"
-        description: "Client's First Name"
-      Last_Name:
-        type: "string"
-        description: "Client's Last Name"
-      Client_DOB:
-        type: "string"
-        format: "full-date"
-        description: "Client's Date of Birth"
-      Client_SSN:
-        type: "integer"
-        description: "Client's Social Security Number"
-      Address:
-        $ref: "#/definitions/Client_Address"
-      Email:
-        type: "string"
-        description: "Client's Address"
-      Home_Phone:
-        type: "number"
-        description: "Client's Home Phone Number"
-      Work_phone:
-        type: "number"
-        description: "Client's Work Phone Number"
-      Cell_Phone:
-        type: "number"
-        description: "Client's Cell Phone Number - pseudonym = REFERRAL_PROSPECT_DEMO_1_CELL"
-      Client_EDD:
-        type: "string"
-        format: "full-date"
-        description: "Client's estimated due date  - pseudonym = REFERRAL_PROSPECT_DEMO_1_EDD"
-      Primary_Language:
-        type: "string"
-        description: "Client's primary language - pseudonym = DEMO_CLIENT_INTAKE_0_LANGUAGE"
-      Ethnicity:
-        type: "string"
-        description: "Client's Ethnicity - pseudonym = DEMO_CLIENT_INTAKE_0_ETHNICITY"
-        enum:
-        - "Hispanic or Latina"
-        - "Not Hispanic or Latina"
-        - "Declined to self-identify"
-      Race:
-        type: "array"
-        description: "Client's race, can be more than one - pseudonym = DEMO_CLIENT_INTAKE_0_RACE"
-        items:
-          type: "string"
-  Assessment:
-    type: "object"
-    required:
-    - "Agency_Source_System_ID"
-    - "Assessment"
-    - "Assessment_Date"
-    - "Assessment_ID"
-    - "Client_Source_System_ID"
-    - "Nurse_Source_System_ID"
-    - "Pseudonym_Responses"
-    properties:
-      Assessment_ID:
-        type: "string"
-      Assessment:
-        type: "string"
-      Nurse_Source_System_ID:
-        type: "string"
-      Client_Source_System_ID:
-        type: "string"
-      Agency_Source_System_ID:
-        type: "string"
-      Assessment_Date:
-        type: "string"
-        format: "full-date"
-      Pseudonym_Responses:
-        type: "array"
-        items:
-          $ref: "#/definitions/PseudonymResponse"
-  Agency:
-    type: "object"
-    required:
-    - "AGENCY_DATE_FIRST_HOME_VISIT"
-    - "AGENCY_INFO_0_NAME"
-    - "AGENCY_INFO_1_INITIATION_DATE"
-    - "AGENCY_INFO_1_LOWINCOME_CRITERA"
-    - "AGENCY_INFO_1_LOWINCOME_DESCRIPTION"
-    - "AGENCY_INFO_1_LOWINCOME_PERCENT"
-    - "AGENCY_INFO_1_TYPE"
-    - "Phone1"
-    - "SiteID"
-    - "Site_Name"
-    properties:
-      SiteID:
-        type: "string"
-        description: "Unique ID assigned to each Implementing Agency"
-      AGENCY_INFO_0_NAME:
-        type: "string"
-        description: "Name of Implementing Agency"
-      Site_Name:
-        type: "string"
-        description: "Name of Implementing Agency"
-      Address:
-        $ref: "#/definitions/Agency_Address"
-      Phone1:
-        type: "number"
-        description: "Agency's Phone number"
-      AGENCY_INFO_1_TYPE:
-        type: "string"
-        description: "Type of Organization"
-        enum:
-        - "Public Health"
-        - "Agency or Clinic"
-        - "Hospital"
-        - "Community Based Organization"
-      AGENCY_INFO_1_LOWINCOME_CRITERA:
-        type: "string"
-        description: "Low-income criteria used for eligibility"
-      AGENCY_INFO_1_LOWINCOME_PERCENT:
-        type: "string"
-        description: "Low-income criteria used for eligibility"
-      AGENCY_INFO_1_LOWINCOME_DESCRIPTION:
-        type: "string"
-        description: "Low-income criteria used for eligibility"
-      AGENCY_INFO_1_WEBSITE:
-        type: "string"
-        description: "Implementing Agency Website"
-      SERVICE_LEVEL_COVERED:
-        type: "string"
-        description: "Service level Implementing Agency Covers"
-        enum:
-        - "City"
-        - "County"
-        - "Parish"
-        - "Region"
-        - "Tribe"
-      COUNTIES_SERVED:
-        type: "string"
-      AGENCY_INFO_1_INITIATION_DATE:
-        type: "string"
-        format: "full-date"
-        description: "Date Implementing Agency began implementing NFP"
-      AGENCY_DATE_FIRST_HOME_VISIT:
-        type: "string"
-        format: "full-date"
-        description: "Date of the first home visit at that Implementing Agency"
-  PseudonymResponse:
-    type: "object"
-    properties:
-      Pseudonym:
-        type: "string"
-      Pseudonym_Response:
-        type: "string"
   Pseudonym:
     type: "object"
     properties:
@@ -412,23 +458,6 @@ definitions:
         type: "string"
       Description:
         type: "string"
-  Client_Address:
-    properties:
-      Address_1:
-        type: "string"
-        description: "Client's street address"
-      Address_2:
-        type: "string"
-        description: "Client's extended address which could include apt"
-      City:
-        type: "string"
-        description: "Client's city of residence"
-      State:
-        type: "string"
-        description: "Client's state of residence"
-      Zip_Code:
-        type: "string"
-        description: "Client's Zipcode/PostalCode"
   Agency_Address:
     properties:
       Address_1:
@@ -446,3 +475,20 @@ definitions:
       ZipCode:
         type: "string"
         description: "Agency's Zipcode/PostalCode"
+  Client_Address:
+    properties:
+      Address_1:
+        type: "string"
+        description: "Client's street address"
+      Address_2:
+        type: "string"
+        description: "Client's extended address which could include apt"
+      City:
+        type: "string"
+        description: "Client's city of residence"
+      State:
+        type: "string"
+        description: "Client's state of residence"
+      Zip_Code:
+        type: "string"
+        description: "Client's Zipcode/PostalCode"
