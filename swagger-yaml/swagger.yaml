@@ -75,7 +75,7 @@ paths:
         type: "string"
       responses:
         200:
-          description: "An array of Pseudodyms"
+          description: "An array of Pseudodyms for other api calls"
           schema:
             type: "array"
             items:
