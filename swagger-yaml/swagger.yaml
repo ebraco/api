@@ -141,6 +141,8 @@ definitions:
       Race:
         type: "array"
         description: "Nurse's Race, can be more than 1 - pseudonym = NURSE_1_RACE_0,NURSE_1_RACE_1,NURSE_1_RACE_3,NURSE_1_RACE_4,NURSE_1_RACE_5"
+        items:
+          type: "string"
       Primary_Language:
         type: "string"
         description: "The primary language of the nurse.  - pseudonym = NURSE_0_LANGUAGE"
@@ -296,6 +298,8 @@ definitions:
       Race:
         type: "array"
         description: "Client's race, can be more than one - pseudonym = DEMO_CLIENT_INTAKE_0_RACE"
+        items:
+          type: "string"
   Assessment:
     type: "object"
     required:
