@@ -1,7 +1,7 @@
 ---
 swagger: "2.0"
 info:
-  version: "1.0.2"
+  version: "1.0.3"
   title: "NFP Data transfer API"
 host: "virtserver.swaggerhub.com"
 basePath: "/NurseFamilyPartnership/NFP_DW_DC_Interface/1.0.0"
@@ -11,7 +11,6 @@ consumes:
 - "application/json"
 produces:
 - "application/json"
-- "application/xml"
 paths:
   /post/Nurse:
     post:
@@ -142,7 +141,7 @@ definitions:
       Race:
         type: "array"
         description: "Nurse's Race, can be more than 1 - pseudonym = NURSE_1_RACE_0,NURSE_1_RACE_1,NURSE_1_RACE_3,NURSE_1_RACE_4,NURSE_1_RACE_5"
-      Primary Language:
+      Primary_Language:
         type: "string"
         description: "The primary language of the nurse.  - pseudonym = NURSE_0_LANGUAGE"
         enum:
@@ -303,10 +302,13 @@ definitions:
     - "Agency_Source_System_ID"
     - "Assessment"
     - "Assessment_Date"
+    - "Assessment_ID"
     - "Client_Source_System_ID"
     - "Nurse_Source_System_ID"
     - "Pseudonym_Responses"
     properties:
+      Assessment_ID:
+        type: "string"
       Assessment:
         type: "string"
       Nurse_Source_System_ID:
