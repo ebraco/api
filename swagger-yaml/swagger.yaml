@@ -3,8 +3,6 @@ swagger: "2.0"
 info:
   version: "1.0.3"
   title: "NFP Data transfer API"
-host: "virtserver.swaggerhub.com"
-basePath: "/NurseFamilyPartnership/NFP_DW_DC_Interface/1.0.0"
 schemes:
 - "https"
 consumes:
@@ -445,4 +443,3 @@ definitions:
       ZipCode:
         type: "string"
         description: "Agency's Zipcode/PostalCode"
-x-aws-api-id: "9oruq6e1w0"
