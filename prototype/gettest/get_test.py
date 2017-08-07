@@ -29,7 +29,7 @@ def lambda_handler(event, context):
 
     item_count = 0
     with conn.cursor() as cur:
-       cur.execute('select pseudonym_name, datatype, DATE_FORMAT(start_date, "%Y-%m-%dT%T.%f") as start_date, description from pseudonym')
+       cur.execute('select pseudonym_name as Pseudonym, datatype as Data_Type, DATE_FORMAT(start_date, "%Y-%m-%dT%T.%f") as Start_Date, description as Description from pseudonym')
        row_headers=[x[0] for x in cur.description]
        rv = cur.fetchall()
        json_data=[]
