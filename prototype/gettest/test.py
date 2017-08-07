@@ -22,13 +22,14 @@ except:
     This function inserts content into mysql RDS instance
     """
 item_count = 0
-data='{'
+jrows=[]
 with conn.cursor() as cur:
-    cur.execute("select * from pseudonym")
-    rows = cur.fetchall()
+    cur.execute('select pseudonym_name, datatype, DATE_FORMAT(start_date, "%Y-%m-%dT%T.%f") as start_date, description from pseudonym')
+    row_headers=[x[0] for x in cur.description]
+    rv = cur.fetchall()
+    json_data=[]
+    for result in rv:
+        json_data.append(dict(zip(row_headers,result)))
 
-    for row in rows:
-       data=data+'"pseudonym_name" : "'+row[1]+'"'
-
-data=data+"}"
-print(data)
+#print(data)
+print json.dumps(json_data, sort_keys=True, indent=4)
