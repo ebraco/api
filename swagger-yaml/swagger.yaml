@@ -3,8 +3,8 @@ swagger: "2.0"
 info:
   version: "1.0.3"
   title: "NFP Data transfer API"
-host: "m9y2ugvet0.execute-api.us-west-2.amazonaws.com"
-basePath: "/Beta"
+host: "api.nursefamilypartnership.org"
+basePath: "/v1/Beta"
 schemes:
 - "https"
 paths:
@@ -35,8 +35,6 @@ paths:
     post:
       consumes:
       - "application/json"
-      produces:
-      - "application/json"
       parameters:
       - in: "body"
         name: "Agency"
@@ -58,8 +56,6 @@ paths:
     post:
       consumes:
       - "application/json"
-      produces:
-      - "application/json"
       parameters:
       - in: "body"
         name: "Assessment"
@@ -80,8 +76,6 @@ paths:
   /post/Client:
     post:
       consumes:
-      - "application/json"
-      produces:
       - "application/json"
       parameters:
       - in: "body"
@@ -119,10 +113,11 @@ paths:
         responses:
           default:
             statusCode: "200"
-        requestTemplates:
-          application/json: "{\"statusCode\": 200}"
+        uri: "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:312517840624:function:post_test/invocations"
         passthroughBehavior: "when_no_match"
-        type: "mock"
+        httpMethod: "POST"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws_proxy"
 definitions:
   Agency:
     type: "object"
