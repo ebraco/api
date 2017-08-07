@@ -453,6 +453,9 @@ definitions:
         type: "string"
       Description:
         type: "string"
+      Start_Date:
+        type: "string"
+        format: "full-date"
   Agency_Address:
     properties:
       Address_1:
