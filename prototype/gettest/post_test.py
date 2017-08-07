@@ -9,6 +9,8 @@ import boto
 def lambda_handler(event, context):
     data=json.dumps(event)
 
+    reqid=context.aws_request_id
+
     keyId = "AKIAJ76RR3BYTOPWPFUQ"
     sKeyId="TiHi8LVgSprJHt5H44ijedaGuZECFz0sRJ8dARvA"
     #Connect to S3 with access credentials 
@@ -20,7 +22,7 @@ def lambda_handler(event, context):
     k = Key(bucket)
     
     #Crete a new key with id as the name of the file
-    k.key="nurse.json.api"
+    k.key=reqid+".nurse.apigateway.json"
     
     #Upload the file
     result = k.set_contents_from_string(data)
