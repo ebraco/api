@@ -113,6 +113,8 @@ paths:
         responses:
           default:
             statusCode: "200"
+        requestParameters:
+          integration.request.path.proxy: "method.request.path.proxy"
         uri: "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:312517840624:function:post_test/invocations"
         passthroughBehavior: "when_no_match"
         httpMethod: "POST"
