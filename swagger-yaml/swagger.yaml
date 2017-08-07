@@ -4,7 +4,7 @@ info:
   version: "1.0.3"
   title: "NFP Data transfer API"
 host: "m9y2ugvet0.execute-api.us-west-2.amazonaws.com"
-basePath: "/Beta"
+basePath: "Beta"
 schemes:
 - "https"
 paths:
@@ -117,7 +117,7 @@ paths:
         passthroughBehavior: "when_no_match"
         httpMethod: "POST"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws_proxy"
+        type: "aws"
 definitions:
   Agency:
     type: "object"
