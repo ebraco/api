@@ -27,7 +27,6 @@ def lambda_handler(event, context):
         logger.error("ERROR: Unexpected error: Could not connect to MySql instance.")
         sys.exit()
 
-    print("Hi AWS Support!")
     item_count = 0
     data='{'
     with conn.cursor() as cur:
