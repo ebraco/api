@@ -1,0 +1,30 @@
+{
+  "Type_Of_Record": "NEW",
+  "Nurse_Source_System_ID": "string",
+  "Agency_Source_System_ID": "string",
+  "First_Name": "string",
+  "Middle_Name": "string",
+  "Last_Name": "string",
+  "NFP_Start_Date": "string",
+  "NFP_End_Date": "string",
+  "Email": "string",
+  "Gender": "Male",
+  "Ethnicity": "Hispanic or Latina",
+  "Race": [
+    "A",
+    "B"
+  ],
+  "Primary_Language": "English",
+  "Nursing_Experience_Years": 0,
+  "Maternal_Health_Experience_Years": 0,
+  "Public_Community_Experience_Years": 0,
+  "Supervisor_Experience_Years": 0,
+  "Birth_Year": 0,
+  "Nursing_Degree": "Diploma",
+  "Other_Degree": "Associate Degree",
+  "Primary_Role": "Nurse Supervisor",
+  "Secondary_Role": "Nurse Supervisor",
+  "FTE_Primary_Role": 0,
+  "FTE_Secondary_Role": 0,
+  "Role_Start_Date": "string"
+}
