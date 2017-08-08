@@ -4,6 +4,7 @@ lambda_name="get_test"
 aws lambda invoke \
     --function-name "${lambda_name}" \
     --region us-west-2 \
+    --payload file://get.json \
     output.txt
 
 

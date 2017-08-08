@@ -1,0 +1,35 @@
+{
+"body-json" : {},
+"params" : {
+"path" : {
+    }
+    ,"querystring" : {
+        "Assessment" : "error"
+            }
+    ,"header" : {
+    }
+    },
+"stage-variables" : {
+},
+"context" : {
+    "account-id" : "312517840624",
+    "api-id" : "m9y2ugvet0",
+    "api-key" : "test-invoke-api-key",
+    "authorizer-principal-id" : "",
+    "caller" : "AIDAIQQ6KUXBPFSC7A5BC",
+    "cognito-authentication-provider" : "",
+    "cognito-authentication-type" : "",
+    "cognito-identity-id" : "",
+    "cognito-identity-pool-id" : "",
+    "http-method" : "GET",
+    "stage" : "test-invoke-stage",
+    "source-ip" : "test-invoke-source-ip",
+    "user" : "AIDAIQQ6KUXBPFSC7A5BC",
+    "user-agent" : "Apache-HttpClient/4.5.x (Java/1.8.0_112)",
+    "user-arn" : "arn:aws:iam::312517840624:user/jgoldberg",
+    "request-id" : "test-invoke-request",
+    "resource-id" : "prfx2f",
+    "resource-path" : "/get/Pseudonym"
+    }
+}
+
