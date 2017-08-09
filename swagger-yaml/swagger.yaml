@@ -148,6 +148,11 @@ paths:
         httpMethod: "POST"
         contentHandling: "CONVERT_TO_TEXT"
         type: "aws"
+securityDefinitions:
+  APIKeyHeader:
+    type: "apiKey"
+    name: "X-API-Key"
+    in: "header"
 definitions:
   Agency:
     type: "object"
