@@ -7,8 +7,6 @@ host: "api.nursefamilypartnership.org"
 basePath: "/Beta"
 schemes:
 - "https"
-security:
-- APIKeyHeader: []
 paths:
   /get/Pseudonym:
     get:
@@ -28,6 +26,8 @@ paths:
             $ref: "#/definitions/ArrayOfPseudonym"
         500:
           description: "500 response"
+      x-amazon-apigateway-request-validator: "Validate body, query string parameters,\
+        \ and headers"
       x-amazon-apigateway-integration:
         responses:
           default:
@@ -78,6 +78,8 @@ paths:
       responses:
         200:
           description: "200 response"
+      x-amazon-apigateway-request-validator: "Validate body, query string parameters,\
+        \ and headers"
       x-amazon-apigateway-integration:
         responses:
           default:
@@ -99,6 +101,8 @@ paths:
       responses:
         200:
           description: "200 response"
+      x-amazon-apigateway-request-validator: "Validate body, query string parameters,\
+        \ and headers"
       x-amazon-apigateway-integration:
         responses:
           default:
@@ -120,6 +124,8 @@ paths:
       responses:
         200:
           description: "200 response"
+      x-amazon-apigateway-request-validator: "Validate body, query string parameters,\
+        \ and headers"
       x-amazon-apigateway-integration:
         responses:
           default:
@@ -141,6 +147,8 @@ paths:
       responses:
         200:
           description: "200 response"
+      x-amazon-apigateway-request-validator: "Validate body, query string parameters,\
+        \ and headers"
       x-amazon-apigateway-integration:
         responses:
           default:
@@ -150,11 +158,6 @@ paths:
         httpMethod: "POST"
         contentHandling: "CONVERT_TO_TEXT"
         type: "aws"
-securityDefinitions:
-  APIKeyHeader:
-    type: "apiKey"
-    name: "x-api-key"
-    in: "header"
 definitions:
   Agency:
     type: "object"
@@ -527,3 +530,7 @@ definitions:
       Zip_Code:
         type: "string"
         description: "Client's Zipcode/PostalCode"
+x-amazon-apigateway-request-validators:
+  Validate body, query string parameters, and headers:
+    validateRequestParameters: true
+    validateRequestBody: true
