@@ -7,6 +7,8 @@ host: "api.nursefamilypartnership.org"
 basePath: "/Beta"
 schemes:
 - "https"
+security:
+- APIKeyHeader: []
 paths:
   /get/Pseudonym:
     get:
@@ -158,6 +160,11 @@ paths:
         httpMethod: "POST"
         contentHandling: "CONVERT_TO_TEXT"
         type: "aws"
+securityDefinitions:
+  APIKeyHeader:
+    type: "apiKey"
+    name: "x-api-key"
+    in: "header"
 definitions:
   Agency:
     type: "object"
