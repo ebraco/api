@@ -8,7 +8,7 @@ basePath: "/Beta"
 schemes:
 - "https"
 security:
-- APIKeyHeader: []
+- {}
 paths:
   /get/Pseudonym:
     get:
