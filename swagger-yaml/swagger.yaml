@@ -7,8 +7,6 @@ host: "api.nursefamilypartnership.org"
 basePath: "/Beta"
 schemes:
 - "https"
-security:
-- APIKeyHeader: []
 paths:
   /get/Pseudonym:
     get:
@@ -28,6 +26,8 @@ paths:
             $ref: "#/definitions/ArrayOfPseudonym"
         500:
           description: "500 response"
+      security:
+      - api_key: []
       x-amazon-apigateway-request-validator: "Validate body, query string parameters,\
         \ and headers"
       x-amazon-apigateway-integration:
@@ -161,7 +161,7 @@ paths:
         contentHandling: "CONVERT_TO_TEXT"
         type: "aws"
 securityDefinitions:
-  APIKeyHeader:
+  api_key:
     type: "apiKey"
     name: "x-api-key"
     in: "header"
