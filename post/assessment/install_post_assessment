@@ -9,9 +9,9 @@ role_arn="arn:aws:iam::312517840624:role/Swaggerhub-FullAccess"
 sec_group_id='sg-21b70f59'
 subnet_ids='subnet-9aba62fd,subnet-98ba62ff'
 
-files="${lambda_name}.py rds_config.py"
+files="${lambda_name}.py rds_proto_config.py rds_dev_config.py"
 chmod 755 ${files}
-zip -r "${zip_file}" pymysql ${files}
+zip -r "${zip_file}" boto pymysql ${files}
 
 aws lambda delete-function \
     --region "us-west-2" \

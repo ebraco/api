@@ -9,9 +9,9 @@ def lambda_handler(event, context):
     
     rawdata=json.dumps(event)
     reqid=context.aws_request_id
-    environment=event["stage-variables"]["environment"]
+    environment=event["context"]["stage"]
    
-    if environment == 'proto':
+    if environment == 'Beta':
        import rds_proto_config
     elif environment == 'dev':
        import rds_dev_config
@@ -20,19 +20,19 @@ def lambda_handler(event, context):
 
     keyId = "AKIAJ76RR3BYTOPWPFUQ"
     sKeyId="TiHi8LVgSprJHt5H44ijedaGuZECFz0sRJ8dARvA"
-    #Connect to S3 with access credentials 
-    conn = boto.connect_s3(keyId,sKeyId) 
-    bucket = conn.get_bucket('api-nfp')
-    from boto.s3.key import Key
-    
+    #Connect to S3 with access credentials
+    #conn = boto.connect_s3(keyId,sKeyId)
+    #bucket = conn.get_bucket('api-nfp')
+    #from boto.s3.key import Key
+ 
     #Get the Key object of the bucket
-    k = Key(bucket)
+    #k = Key(bucket)
     
     #Crete a new key with id as the name of the file
-    k.key=reqid+".assessment.apigateway.json"
+    #k.key=reqid+".assessment.apigateway.json"
     
     #Upload the file
-    result = k.set_contents_from_string(rawdata)
+    #result = k.set_contents_from_string(rawdata)
     #result contains the size of the file uploaded
     
     #print json_data
@@ -42,8 +42,3 @@ def lambda_handler(event, context):
     #    print element
     
     #print json.dumps(data, sort_keys=True, indent=4)
-
-
-
-
-
