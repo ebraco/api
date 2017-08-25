@@ -13,15 +13,15 @@ def lambda_handler(event, context):
    
     if environment == 'Beta':
        import rds_proto_config
-       #keyId  = rds_proto_config.keyId
-       #sKeyId  = rds_proto_config.sKeyId
+       keyId  = rds_proto_config.keyId
+       sKeyId  = rds_proto_config.sKeyId
     elif environment == 'dev':
        import rds_dev_config
     else:
        raise Exception('"NFP-Error-Code:No Environment Configured in Context"')
 
-    keyId = "AKIAJ76RR3BYTOPWPFUQ"
-    sKeyId="TiHi8LVgSprJHt5H44ijedaGuZECFz0sRJ8dARvA"
+    #keyId = "AKIAJ76RR3BYTOPWPFUQ"
+    #sKeyId="TiHi8LVgSprJHt5H44ijedaGuZECFz0sRJ8dARvA"
     #Connect to S3 with access credentials
     conn = boto.connect_s3(keyId,sKeyId)
     bucket = conn.get_bucket('api-nfp')

@@ -6,6 +6,6 @@ db_name = "proto"
 db_endpoint = "jdg-proto-type.ccf0v3myj6k1.us-west-2.rds.amazonaws.com"
 
 #S3 Config
-#keyId = "AKIAJ76RR3BYTOPWPFUQ"
-#sKeyId="TiHi8LVgSprJHt5H44ijedaGuZECFz0sRJ8dARvA"
+keyId = "AKIAJ76RR3BYTOPWPFUQ"
+sKeyId="TiHi8LVgSprJHt5H44ijedaGuZECFz0sRJ8dARvA"
 
