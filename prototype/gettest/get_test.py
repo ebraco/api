@@ -26,7 +26,7 @@ def lambda_handler(event, context):
 
     try:
         conn = pymysql.connect(rds_host, user=name,
-                           passwd=password, db=db_name, connect_timeout=5)
+                           passwd=password, db=db_name, connect_timeout=10)
     except:
         logger.error("ERROR: Unexpected error: Could not connect to MySql instance.")
         sys.exit()
