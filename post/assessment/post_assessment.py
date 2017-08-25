@@ -6,16 +6,16 @@ import json
 import boto
 
 def lambda_handler(event, context):
-    data=json.dumps(event)
-
+    
+    rawdata=json.dumps(event)
     reqid=context.aws_request_id
-    environment=context.environment
+    environment=event["stage-variables"]["environment"]
    
-    if environment = 'proto'
+    if environment == 'proto':
        import rds_proto_config
-    elsif environment = 'dev'
+    elif environment == 'dev':
        import rds_dev_config
-    elsif
+    else:
        raise Exception('"NFP-Error-Code:No Environment Configured in Context"')
 
     keyId = "AKIAJ76RR3BYTOPWPFUQ"
@@ -32,7 +32,7 @@ def lambda_handler(event, context):
     k.key=reqid+".assessment.apigateway.json"
     
     #Upload the file
-    result = k.set_contents_from_string(data)
+    result = k.set_contents_from_string(rawdata)
     #result contains the size of the file uploaded
     
     #print json_data
