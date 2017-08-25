@@ -1,7 +1,6 @@
 #!/usr/bin/python
 import sys
 import logging
-import rds_config
 import pymysql
 import json
 import boto
@@ -10,6 +9,14 @@ def lambda_handler(event, context):
     data=json.dumps(event)
 
     reqid=context.aws_request_id
+    environment=context.environment
+   
+    if environment = 'proto'
+       import rds_proto_config
+    elsif environment = 'dev'
+       import rds_dev_config
+    elsif
+       raise Exception('"NFP-Error-Code:No Environment Configured in Context"')
 
     keyId = "AKIAJ76RR3BYTOPWPFUQ"
     sKeyId="TiHi8LVgSprJHt5H44ijedaGuZECFz0sRJ8dARvA"
@@ -22,7 +29,7 @@ def lambda_handler(event, context):
     k = Key(bucket)
     
     #Crete a new key with id as the name of the file
-    k.key=reqid+".nurse.apigateway.json"
+    k.key=reqid+".assessment.apigateway.json"
     
     #Upload the file
     result = k.set_contents_from_string(data)
