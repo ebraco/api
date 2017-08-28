@@ -39,7 +39,7 @@ def lambda_handler(event, context):
 
     # Validate every pseudonym
     for pseudonym_row in event['body-json']['Pseudonym_Responses']:
-        nfp_validate.validate_pseudonym(conn,pseudonym_row['Pseudonym_Response'])
+        nfp_validate.validate_pseudonym(conn,pseudonym_row['Pseudonym'])
 
 
     #Connect to S3 with access credentials
