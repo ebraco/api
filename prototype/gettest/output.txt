@@ -1,1 +1,1 @@
-{"stackTrace": [["/var/task/get_test.py", 44, "lambda_handler", "raise Exception('\"NFP-Error-Code:400059\"')"]], "errorType": "Exception", "errorMessage": "\"NFP-Error-Code:400059\""}
+{"stackTrace": [["/var/task/post_assessment.py", 12, "lambda_handler", "environment=context.environment"]], "errorType": "AttributeError", "errorMessage": "'LambdaContext' object has no attribute 'environment'"}

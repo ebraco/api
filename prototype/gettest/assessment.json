@@ -1,0 +1,14 @@
+{
+  "Assessment_ID": "string",
+  "Assessment": "string",
+  "Nurse_Source_System_ID": "string",
+  "Client_Source_System_ID": "string",
+  "Agency_Source_System_ID": "string",
+  "Assessment_Date": "string",
+  "Pseudonym_Responses": [
+    {
+      "Pseudonym": "string",
+      "Pseudonym_Response": "string"
+    }
+  ]
+}

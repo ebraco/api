@@ -1,0 +1,11 @@
+#!/bin/sh
+lambda_name="post_assessment"
+
+aws lambda invoke \
+    --function-name "${lambda_name}" \
+    --region us-west-2 \
+    --payload file://assessment.json \
+    output.txt
+
+
+cat output.txt
