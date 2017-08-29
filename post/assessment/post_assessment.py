@@ -5,6 +5,7 @@ import pymysql
 import json
 import boto
 import nfp_validate
+import time
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -39,7 +40,16 @@ def lambda_handler(event, context):
 
     # Validate every pseudonym
     for pseudonym_row in event['body-json']['Pseudonym_Responses']:
-        nfp_validate.validate_pseudonym(conn,pseudonym_row['Pseudonym'])
+        try:
+            nfp_validate.validate_pseudonym(conn,pseudonym_row['Pseudonym'])
+        except nfp_validate.NFP_Exception, (instance):
+            return(instance.parameter)
+
+    #i Validate assessment_date
+    try:
+        nfp_validate.validate_date(event['body-json']['Assessment_Date'])
+    except nfp_validate.NFP_Exception, (instance):
+            return(instance.parameter)
 
 
     #Connect to S3 with access credentials
@@ -55,4 +65,6 @@ def lambda_handler(event, context):
 
     #Upload the file
     result = k.set_contents_from_string(rawdata)
+
+    return('{message:success}')
 
