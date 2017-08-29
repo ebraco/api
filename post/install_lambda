@@ -1,5 +1,11 @@
-#!/bin/sh  -x
-lambda_name="post_assessment"
+#!/bin/bash 
+
+if ["$1" == ""] 
+then
+    echo "Usage: $0 Lambda_function_name"
+fi
+
+lambda_name="$1"
 zip_file="${lambda_name}.zip"
 role_arn="arn:aws:iam::312517840624:role/Swaggerhub-FullAccess"
 #subnet_ids=`aws ec2 describe-subnets |\
