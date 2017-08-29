@@ -11,9 +11,14 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
-    
+   
+    #convert event from python var to string 
     rawdata=json.dumps(event)
+
+    #grab the context request id for naming
     reqid=context.aws_request_id
+
+    # grab the /Area the API is being called from aka the environment
     environment=event["context"]["stage"]
    
     if environment == 'Beta':
@@ -33,7 +38,7 @@ def lambda_handler(event, context):
 
     try:
         conn = pymysql.connect(rds_host, user=name,
-                           passwd=password, db=db_name, connect_timeout=10)
+                           passwd=password, db=db_name, connect_timeout=30)
     except:
         logger.error("ERROR: Unexpected error: Could not connect to MySql instance.")
         sys.exit()
