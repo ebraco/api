@@ -43,7 +43,15 @@ def lambda_handler(event, context):
         logger.error("ERROR: Unexpected error: Could not connect to MySql instance.")
         sys.exit()
 
-    # Validate assessment_date
+    # Validate NFP_Start_Date
+    try:
+        nfpstartdate=event['body-json']['NFP_Start_Date']
+        try:
+            nfp_validate.validate_date(nfpstartdate)
+        except nfp_validate.NFP_Exception, (instance):
+            return(instance.parameter)
+    except: 
+        pass
     #try:
         #nfp_validate.validate_date(event['body-json']['Assessment_Date'])
     #except nfp_validate.NFP_Exception, (instance):
