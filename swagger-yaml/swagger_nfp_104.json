@@ -71,6 +71,19 @@ paths:
       responses:
         200:
           description: "200 response"
+  /post/Child:
+    post:
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Child"
+        required: true
+        schema:
+          $ref: "#/definitions/Child"
+      responses:
+        200:
+          description: "200 response"
   /post/Nurse:
     post:
       consumes:
@@ -261,6 +274,73 @@ definitions:
       Race:
         type: "array"
         description: "Client's race, can be more than one - pseudonym = DEMO_CLIENT_INTAKE_0_RACE"
+        items:
+          type: "string"
+  Child:
+    type: "object"
+    required:
+    - "Agency_Source_System_ID"
+    - "Child_Source_System_ID"
+    - "First_Name"
+    - "Last_Name"
+    - "Type_Of_Record"
+    properties:
+      Type_Of_Record:
+        type: "string"
+        description: "What type of record New or Update"
+        enum:
+        - "NEW"
+        - "UPDATE"
+      Child_Source_System_ID:
+        type: "string"
+        description: "Unique NPF Child Identifier - pseudonym = CL_EN_GEN_ID"
+      Agency_Source_System_ID:
+        type: "string"
+        description: "The unique identifier from the source system - pseudonym = Child_0_ID_AGENCY"
+      First_Name:
+        type: "string"
+        description: "Child's First Name"
+      Last_Name:
+        type: "string"
+        description: "Child's Last Name"
+      Child_DOB:
+        type: "string"
+        format: "full-date"
+        description: "Child's Date of Birth"
+      Child_SSN:
+        type: "integer"
+        description: "Child's Social Security Number"
+      Address:
+        $ref: "#/definitions/Child_Address"
+      Email:
+        type: "string"
+        description: "Child's Address"
+      Home_Phone:
+        type: "number"
+        description: "Child's Home Phone Number"
+      Work_phone:
+        type: "number"
+        description: "Child's Work Phone Number"
+      Cell_Phone:
+        type: "number"
+        description: "Child's Cell Phone Number - pseudonym = REFERRAL_PROSPECT_DEMO_1_CELL"
+      Child_EDD:
+        type: "string"
+        format: "full-date"
+        description: "Child's estimated due date  - pseudonym = REFERRAL_PROSPECT_DEMO_1_EDD"
+      Primary_Language:
+        type: "string"
+        description: "Child's primary language - pseudonym = DEMO_Child_INTAKE_0_LANGUAGE"
+      Ethnicity:
+        type: "string"
+        description: "Child's Ethnicity - pseudonym = DEMO_Child_INTAKE_0_ETHNICITY"
+        enum:
+        - "Hispanic or Latina"
+        - "Not Hispanic or Latina"
+        - "Declined to self-identify"
+      Race:
+        type: "array"
+        description: "Child's race, can be more than one - pseudonym = DEMO_Child_INTAKE_0_RACE"
         items:
           type: "string"
   Nurse:
@@ -461,3 +541,20 @@ definitions:
       Zip_Code:
         type: "string"
         description: "Client's Zipcode/PostalCode"
+  Child_Address:
+    properties:
+      Address_1:
+        type: "string"
+        description: "Child's street address"
+      Address_2:
+        type: "string"
+        description: "Child's extended address which could include apt"
+      City:
+        type: "string"
+        description: "Child's city of residence"
+      State:
+        type: "string"
+        description: "Child's state of residence"
+      Zip_Code:
+        type: "string"
+        description: "Child's Zipcode/PostalCode"
