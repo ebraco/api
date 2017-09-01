@@ -177,27 +177,64 @@ definitions:
   Assessment:
     type: "object"
     required:
-    - "Agency_Source_System_ID"
-    - "Assessment"
+    - "Agency_ID"
     - "Assessment_Date"
     - "Assessment_ID"
-    - "Client_Source_System_ID"
-    - "Nurse_Source_System_ID"
+    - "Assessment_Name"
+    - "Assessment_Question"
+    - "Assessment_Type"
+    - "Client_ID"
+    - "Data_Source"
+    - "Nurse_ID"
+    - "Program_ID"
     - "Pseudonym_Responses"
+    - "Question_ID"
     properties:
       Assessment_ID:
         type: "string"
-      Assessment:
+      Assessment_Name:
         type: "string"
-      Nurse_Source_System_ID:
+      Nurse_ID:
         type: "string"
-      Client_Source_System_ID:
+        description: "Unique ID assigned to each nurse"
+      Client_ID:
         type: "string"
-      Agency_Source_System_ID:
+        description: "Unique ID assigned to each Client pseudonym =  CLIENT_0_ID_AGENCY,\
+          \ Client_Id, CL_EN_GEN_ID"
+      Agency_ID:
         type: "string"
+        description: "Unique ID assigned to each Implementing Agency pseudonym = Site_ID"
+      Infant_ID:
+        type: "string"
+        description: "Unique ID ssigned to each child pseudonym = INFANT_0_ID_NSO\
+          \ INFANT_0_ID_NSO2 INFANT_0_ID_NSO3"
       Assessment_Date:
         type: "string"
         format: "full-date"
+        description: "Date the assessment was completed pseudonym = SureyDate"
+      Assessment_Question:
+        type: "string"
+        description: " Pseudo associated to each question on specific assessment"
+      Program_ID:
+        type: "string"
+        description: "Unique ID assigned to each Team/Program at the specific Implementing\
+          \ Agency pseudonym = ProgramID"
+      Question_ID:
+        type: "string"
+        description: " Unique ID assigned to each question"
+      Response_ID:
+        type: "string"
+        description: "Unique ID assigned to each response "
+      Assessment_Type:
+        type: "string"
+        description: "This will identify if this is a new assessment or if an update\
+          \ has been made to an assessment already submitted"
+        enum:
+        - "New"
+        - "Update"
+      Data_Source:
+        type: "string"
+        description: "Source system that the data originates from"
       Pseudonym_Responses:
         type: "array"
         items:
