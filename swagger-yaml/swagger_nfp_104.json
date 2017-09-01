@@ -221,6 +221,7 @@ definitions:
     - "Ethnicity"
     - "First_Name"
     - "Last_Name"
+    - "Primary_Language"
     - "Race"
     - "Type_Of_Record"
     properties:
