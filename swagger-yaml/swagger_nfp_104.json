@@ -212,10 +212,16 @@ definitions:
   Client:
     type: "object"
     required:
-    - "Agency_Source_System_ID"
-    - "Client_Source_System_ID"
+    - "Agency_ID"
+    - "Cell_Phone"
+    - "Client_DOB"
+    - "Client_EDD"
+    - "Client_ID"
+    - "Data_Source"
+    - "Ethnicity"
     - "First_Name"
     - "Last_Name"
+    - "Race"
     - "Type_Of_Record"
     properties:
       Type_Of_Record:
@@ -224,12 +230,16 @@ definitions:
         enum:
         - "NEW"
         - "UPDATE"
-      Client_Source_System_ID:
+      Client_ID:
         type: "string"
-        description: "Unique NPF Client Identifier - pseudonym = CL_EN_GEN_ID"
-      Agency_Source_System_ID:
+        description: "Unique NPF Client Identifier - pseudonym = CL_EN_GEN_ID, Client_Id,\
+          \ CLIENT_0_AGENCY"
+      Agency_ID:
         type: "string"
-        description: "The unique identifier from the source system - pseudonym = CLIENT_0_ID_AGENCY"
+        description: "The unique identifier from the source system - pseudonym = Site_ID"
+      Data_Source:
+        type: "string"
+        description: "Source system that data originates from"
       First_Name:
         type: "string"
         description: "Client's First Name"
@@ -264,6 +274,23 @@ definitions:
       Primary_Language:
         type: "string"
         description: "Client's primary language - pseudonym = DEMO_CLIENT_INTAKE_0_LANGUAGE"
+        enum:
+        - "English"
+        - "Spanish"
+        - "Arabic"
+        - "Cantonese"
+        - "French"
+        - "Hindi"
+        - "Italian"
+        - "Japanese"
+        - "Korean"
+        - "Mandarin"
+        - "Polish"
+        - "Russian"
+        - "Tagalog"
+        - "Tribal Languages"
+        - "Vietnamese"
+        - "Other"
       Ethnicity:
         type: "string"
         description: "Client's Ethnicity - pseudonym = DEMO_CLIENT_INTAKE_0_ETHNICITY"
@@ -272,10 +299,14 @@ definitions:
         - "Not Hispanic or Latina"
         - "Declined to self-identify"
       Race:
-        type: "array"
+        type: "string"
         description: "Client's race, can be more than one - pseudonym = DEMO_CLIENT_INTAKE_0_RACE"
-        items:
-          type: "string"
+        enum:
+        - "American Indian or Alaska Native"
+        - "Asian"
+        - "Black or African American"
+        - "Native Hawaiian or other Pacific Islander"
+        - "White"
   Child:
     type: "object"
     required:
