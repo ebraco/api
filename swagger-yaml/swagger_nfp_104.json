@@ -376,12 +376,16 @@ definitions:
   Nurse:
     type: "object"
     required:
-    - "Agency_Source_System_ID"
+    - "Agency_ID"
+    - "Data_Source"
     - "Email"
+    - "FTE_Primary_Role"
     - "First_Name"
     - "Last_Name"
-    - "Nurse_Source_System_ID"
+    - "NFP_Start_Date"
+    - "Nurse_ID"
     - "Nursing_Degree"
+    - "Primary_Role"
     - "Type_Of_Record"
     properties:
       Type_Of_Record:
@@ -390,12 +394,12 @@ definitions:
         enum:
         - "NEW"
         - "UPDATE"
-      Nurse_Source_System_ID:
+      Nurse_ID:
         type: "string"
         description: "Unique NPF Nurse Identifier, Pseudonym ="
-      Agency_Source_System_ID:
+      Agency_ID:
         type: "string"
-        description: "The unique identifier from the source system"
+        description: "The unique identifier from the source system pseudonym = Site_ID"
       First_Name:
         type: "string"
         description: "Nurse's First Name"
@@ -408,7 +412,7 @@ definitions:
       NFP_Start_Date:
         type: "string"
         format: "full-date"
-        description: "Date Nurse Started at NFP - pseudonym ="
+        description: "Date Nurse Started at NFP - pseudonym = START_DATE"
       NFP_End_Date:
         type: "string"
         format: "full-date"
@@ -431,10 +435,14 @@ definitions:
         - "Not Hispanic or Latina"
         - "Declined to self-identify"
       Race:
-        type: "array"
+        type: "string"
         description: "Nurse's Race, can be more than 1 - pseudonym = NURSE_1_RACE_0,NURSE_1_RACE_1,NURSE_1_RACE_3,NURSE_1_RACE_4,NURSE_1_RACE_5"
-        items:
-          type: "string"
+        enum:
+        - "American Indian or Alaska Native"
+        - "Asian"
+        - "Black or African American"
+        - "Native Hawaiian or other Pacific Islander"
+        - "White"
       Primary_Language:
         type: "string"
         description: "The primary language of the nurse.  - pseudonym = NURSE_0_LANGUAGE"
@@ -525,6 +533,9 @@ definitions:
         type: "string"
         format: "full-date"
         description: "The date a nurse changes to a new role - pseudonym = NURSE_STATUS_0_CHANGE_START_DATE"
+      Data_Source:
+        type: "string"
+        description: "  Source system that data originates from"
   Pseudonym:
     type: "object"
     properties:
