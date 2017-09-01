@@ -279,70 +279,68 @@ definitions:
   Child:
     type: "object"
     required:
-    - "Agency_Source_System_ID"
-    - "Child_Source_System_ID"
-    - "First_Name"
-    - "Last_Name"
+    - "Agency_ID"
+    - "Data_Source"
+    - "Ethnicity"
+    - "Gender"
+    - "Infant_DOB"
+    - "Infant_First_Name"
+    - "Infant_ID"
+    - "Infant_Last_Name"
+    - "Race"
     - "Type_Of_Record"
     properties:
+      Data_Source:
+        type: "string"
+        description: "Source system the data originates from"
       Type_Of_Record:
         type: "string"
         description: "What type of record New or Update"
         enum:
         - "NEW"
         - "UPDATE"
-      Child_Source_System_ID:
+      Infant_ID:
         type: "string"
-        description: "Unique NPF Child Identifier - pseudonym = CL_EN_GEN_ID"
-      Agency_Source_System_ID:
+        description: "Unique ID assigned to each child by source system pseudonym\
+          \ = INFANT_0_ID_NSO,INFANT_0_ID_NSO2,INFANT_0_ID_NSO3"
+      Agency_ID:
         type: "string"
-        description: "The unique identifier from the source system - pseudonym = Child_0_ID_AGENCY"
-      First_Name:
+        description: " IA that the client is associated with pseudonym = Site_ID"
+      Infant_First_Name:
         type: "string"
-        description: "Child's First Name"
-      Last_Name:
+        description: "Child's First Name pseudonym =  INFANT_PERSONAL_0_FIRSTNAME,INFANT_PERSONAL_0_FIRSTNAME2,INFANT_PERSONAL_0_FIRSTNAME3"
+      Infant_Last_Name:
         type: "string"
-        description: "Child's Last Name"
-      Child_DOB:
-        type: "string"
-        format: "full-date"
-        description: "Child's Date of Birth"
-      Child_SSN:
-        type: "integer"
-        description: "Child's Social Security Number"
-      Address:
-        $ref: "#/definitions/Child_Address"
-      Email:
-        type: "string"
-        description: "Child's Address"
-      Home_Phone:
-        type: "number"
-        description: "Child's Home Phone Number"
-      Work_phone:
-        type: "number"
-        description: "Child's Work Phone Number"
-      Cell_Phone:
-        type: "number"
-        description: "Child's Cell Phone Number - pseudonym = REFERRAL_PROSPECT_DEMO_1_CELL"
-      Child_EDD:
+        description: "Child's Last Name pseudonym =  INFANT_PERSONAL_0_LAST NAME"
+      Infant_DOB:
         type: "string"
         format: "full-date"
-        description: "Child's estimated due date  - pseudonym = REFERRAL_PROSPECT_DEMO_1_EDD"
-      Primary_Language:
-        type: "string"
-        description: "Child's primary language - pseudonym = DEMO_Child_INTAKE_0_LANGUAGE"
+        description: "Child's Date of Birth pseudonym =  INFANT_BIRTH_0_DOB,INFANT_BIRTH_0_DOB2,INFANT_BIRTH_0_DOB3 "
       Ethnicity:
         type: "string"
-        description: "Child's Ethnicity - pseudonym = DEMO_Child_INTAKE_0_ETHNICITY"
+        description: "Child's Ethnicity - pseudonym =  INFANT_PERSONAL_0_ETHNICITY,\
+          \  INFANT_PERSONAL_0_ETHNICITY2, INFANT_PERSONAL_0_ETHNICITY3"
         enum:
         - "Hispanic or Latina"
         - "Not Hispanic or Latina"
         - "Declined to self-identify"
+      Gender:
+        type: "string"
+        description: "Child's Gender pseudonym = INFANT_PERSONAL_0_GENDER,INFANT_PERSONAL_0_GENDER2,\
+          \ INFANT_PERSONAL_0_GENDER3"
+        enum:
+        - "Male"
+        - "Female"
       Race:
-        type: "array"
-        description: "Child's race, can be more than one - pseudonym = DEMO_Child_INTAKE_0_RACE"
-        items:
-          type: "string"
+        type: "string"
+        description: "Child's race, can be more than one - pseudonym = INFANT_PERSONAL_0_RACE,\
+          \ INFANT_PERSONAL_0_RACE2,INFANT_PERSONAL_0_RACE3"
+        enum:
+        - "American Indian or Alaska Native"
+        - "Asian"
+        - "Black or African American"
+        - "Native Hawaiian or other Pacific Islander"
+        - "White"
   Nurse:
     type: "object"
     required:
@@ -541,20 +539,3 @@ definitions:
       Zip_Code:
         type: "string"
         description: "Client's Zipcode/PostalCode"
-  Child_Address:
-    properties:
-      Address_1:
-        type: "string"
-        description: "Child's street address"
-      Address_2:
-        type: "string"
-        description: "Child's extended address which could include apt"
-      City:
-        type: "string"
-        description: "Child's city of residence"
-      State:
-        type: "string"
-        description: "Child's state of residence"
-      Zip_Code:
-        type: "string"
-        description: "Child's Zipcode/PostalCode"
