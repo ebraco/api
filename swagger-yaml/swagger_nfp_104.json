@@ -107,33 +107,31 @@ definitions:
     type: "object"
     required:
     - "AGENCY_DATE_FIRST_HOME_VISIT"
-    - "AGENCY_INFO_0_NAME"
     - "AGENCY_INFO_1_INITIATION_DATE"
     - "AGENCY_INFO_1_LOWINCOME_CRITERA"
     - "AGENCY_INFO_1_LOWINCOME_DESCRIPTION"
     - "AGENCY_INFO_1_LOWINCOME_PERCENT"
-    - "AGENCY_INFO_1_TYPE"
-    - "Phone1"
-    - "SiteID"
-    - "Site_Name"
+    - "Agency_ID"
+    - "Agency_Name"
+    - "Agency_Type"
+    - "Counties_Served"
+    - "Data_Source"
+    - "Phone_Number"
     properties:
-      SiteID:
+      Agency_ID:
         type: "string"
-        description: "Unique ID assigned to each Implementing Agency"
-      AGENCY_INFO_0_NAME:
+        description: "Unique ID assigned to each Implementing Agency pseudonym = Site_ID"
+      Agency_Name:
         type: "string"
-        description: "Name of Implementing Agency"
-      Site_Name:
-        type: "string"
-        description: "Name of Implementing Agency"
+        description: "Name of Implementing Agency pseudonym = AGENCY_INFO_0_NAME,Site_Name "
       Address:
         $ref: "#/definitions/Agency_Address"
-      Phone1:
+      Phone_Number:
         type: "number"
-        description: "Agency's Phone number"
-      AGENCY_INFO_1_TYPE:
+        description: "Agency's Phone number pseudonym = Phone1"
+      Agency_Type:
         type: "string"
-        description: "Type of Organization"
+        description: "Type of Organization Psuedonym = AGENCY_INFO_1_TYPE"
         enum:
         - "Public Health"
         - "Agency or Clinic"
@@ -160,7 +158,7 @@ definitions:
         - "Parish"
         - "Region"
         - "Tribe"
-      COUNTIES_SERVED:
+      Counties_Served:
         type: "string"
       AGENCY_INFO_1_INITIATION_DATE:
         type: "string"
@@ -170,6 +168,9 @@ definitions:
         type: "string"
         format: "full-date"
         description: "Date of the first home visit at that Implementing Agency"
+      Data_Source:
+        type: "string"
+        description: "Source system that the data originates from "
   ArrayOfPseudonym:
     type: "array"
     items:
@@ -602,6 +603,9 @@ definitions:
       ZipCode:
         type: "string"
         description: "Agency's Zipcode/PostalCode"
+      County:
+        type: "string"
+        description: "Agency's County"
   Client_Address:
     properties:
       Address_1:
