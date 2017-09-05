@@ -5,10 +5,10 @@ import rds_config
 import pymysql
 import json
 
-rds_host  = rds_config.db_endpoint
-name = rds_config.db_username
-password = rds_config.db_password
-db_name = rds_config.db_name
+rds_host  = rds_dev_config.db_endpoint
+name = rds_dev_config.db_username
+password = rds_dev_config.db_password
+db_name = rds_dev_config.db_name
 port = 3306
 
 logger = logging.getLogger()

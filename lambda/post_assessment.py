@@ -33,6 +33,13 @@ def lambda_handler(event, context):
 
     elif environment == 'dev':
         import rds_dev_config
+        keyId  = rds_dev_config.keyId
+        sKeyId  = rds_dev_config.sKeyId
+        rds_host  = rds_dev_config.db_endpoint
+        name = rds_dev_config.db_username
+        password = rds_dev_config.db_password
+        db_name = rds_dev_config.db_name
+        port = 3306
     else:
         raise Exception('"NFP-Error-Code:No Environment Configured in Context"')
 
