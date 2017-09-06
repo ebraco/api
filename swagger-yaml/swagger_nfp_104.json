@@ -162,19 +162,17 @@ definitions:
         type: "string"
       AGENCY_INFO_1_INITIATION_DATE:
         type: "string"
-        format: "full-date"
+        format: "date"
         description: "Date Implementing Agency began implementing NFP"
       AGENCY_DATE_FIRST_HOME_VISIT:
         type: "string"
-        format: "full-date"
+        format: "date"
         description: "Date of the first home visit at that Implementing Agency"
       Data_Source:
         type: "string"
         description: "Source system that the data originates from "
   ArrayOfPseudonym:
-    type: "array"
-    items:
-      $ref: "#/definitions/Pseudonym"
+    type: "string"
   Assessment:
     type: "object"
     required:
@@ -211,7 +209,7 @@ definitions:
           \ INFANT_0_ID_NSO2 INFANT_0_ID_NSO3"
       Assessment_Date:
         type: "string"
-        format: "full-date"
+        format: "date"
         description: "Date the assessment was completed pseudonym = SureyDate"
       Assessment_Question:
         type: "string"
@@ -237,9 +235,7 @@ definitions:
         type: "string"
         description: "Source system that the data originates from"
       Pseudonym_Responses:
-        type: "array"
-        items:
-          $ref: "#/definitions/PseudonymResponse"
+        type: "string"
   PseudonymResponse:
     type: "object"
     properties:
@@ -287,7 +283,7 @@ definitions:
         description: "Client's Last Name"
       Client_DOB:
         type: "string"
-        format: "full-date"
+        format: "date"
         description: "Client's Date of Birth"
       Client_SSN:
         type: "integer"
@@ -308,7 +304,7 @@ definitions:
         description: "Client's Cell Phone Number - pseudonym = REFERRAL_PROSPECT_DEMO_1_CELL"
       Client_EDD:
         type: "string"
-        format: "full-date"
+        format: "date"
         description: "Client's estimated due date  - pseudonym = REFERRAL_PROSPECT_DEMO_1_EDD"
       Primary_Language:
         type: "string"
@@ -384,7 +380,7 @@ definitions:
         description: "Child's Last Name pseudonym =  INFANT_PERSONAL_0_LAST NAME"
       Infant_DOB:
         type: "string"
-        format: "full-date"
+        format: "date"
         description: "Child's Date of Birth pseudonym =  INFANT_BIRTH_0_DOB,INFANT_BIRTH_0_DOB2,INFANT_BIRTH_0_DOB3 "
       Ethnicity:
         type: "string"
@@ -449,11 +445,11 @@ definitions:
         description: "Nurse's Last Name"
       NFP_Start_Date:
         type: "string"
-        format: "full-date"
+        format: "date"
         description: "Date Nurse Started at NFP - pseudonym = START_DATE"
       NFP_End_Date:
         type: "string"
-        format: "full-date"
+        format: "date"
         description: "Date Nurse Ended work at NFP - pseudonym = NURSE_STATUS_0_CHANGE_TERMINATE_DATE"
       Email:
         type: "string"
@@ -569,7 +565,7 @@ definitions:
           \ NURSE_SECONDARY_ROLE_FTE"
       Role_Start_Date:
         type: "string"
-        format: "full-date"
+        format: "date"
         description: "The date a nurse changes to a new role - pseudonym = NURSE_STATUS_0_CHANGE_START_DATE"
       Data_Source:
         type: "string"
@@ -585,7 +581,7 @@ definitions:
         type: "string"
       Start_Date:
         type: "string"
-        format: "full-date"
+        format: "date"
   Agency_Address:
     properties:
       Address_1:
