@@ -359,6 +359,15 @@ definitions:
         type: "string"
         description: "Source system that the data originates from"
       Pseudonym_Responses:
+        type: "array"
+        items:
+          $ref: "#/definitions/PseudonymResponse"
+  PseudonymResponse:
+    type: "object"
+    properties:
+      Pseudonym:
+        type: "string"
+      Pseudonym_Response:
         type: "string"
   Client:
     type: "object"
