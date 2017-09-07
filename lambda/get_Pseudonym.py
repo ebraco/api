@@ -5,8 +5,11 @@ import rds_config
 import pymysql
 import json
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> dev
 rds_host  = rds_dev_config.db_endpoint
 name = rds_dev_config.db_username
 password = rds_dev_config.db_password
