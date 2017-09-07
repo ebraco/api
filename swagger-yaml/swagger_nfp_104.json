@@ -4,7 +4,7 @@ info:
   version: "1.0.4"
   title: "NFP Data transfer API 104"
 host: "api.nursefamilypartnership.org"
-basePath: "/Dev"
+basePath: "/dev"
 schemes:
 - "https"
 paths:
