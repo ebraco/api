@@ -10,8 +10,6 @@ schemes:
 paths:
   /get/Pseudonym:
     get:
-      consumes:
-      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -28,11 +26,19 @@ paths:
           description: "500 response"
       security:
       - api_key: []
+      x-amazon-apigateway-request-validator: "Validate body, query string parameters,\
+        \ and headers"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        uri: "https://pau20tt9ah.execute-api.us-west-2.amazonaws.com/Dev/get/Pseudonym"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "GET"
+        type: "http"
   /post/Agency:
     post:
       consumes:
-      - "application/json"
-      produces:
       - "application/json"
       parameters:
       - in: "body"
@@ -45,11 +51,19 @@ paths:
           description: "200 response"
       security:
       - api_key: []
+      x-amazon-apigateway-request-validator: "Validate body, query string parameters,\
+        \ and headers"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        uri: "https://pau20tt9ah.execute-api.us-west-2.amazonaws.com/Dev/post/Agency"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "http"
   /post/Assessment:
     post:
       consumes:
-      - "application/json"
-      produces:
       - "application/json"
       parameters:
       - in: "body"
@@ -64,6 +78,16 @@ paths:
           description: "500 response"
       security:
       - api_key: []
+      x-amazon-apigateway-request-validator: "Validate body, query string parameters,\
+        \ and headers"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        uri: "https://pau20tt9ah.execute-api.us-west-2.amazonaws.com/Dev/post/Assessment"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "http"
   /post/Child:
     post:
       consumes:
@@ -79,6 +103,16 @@ paths:
           description: "200 response"
       security:
       - api_key: []
+      x-amazon-apigateway-request-validator: "Validate body, query string parameters,\
+        \ and headers"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        uri: "https://pau20tt9ah.execute-api.us-west-2.amazonaws.com/Dev/post/Child"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "http"
   /post/Client:
     post:
       consumes:
@@ -94,11 +128,19 @@ paths:
           description: "200 response"
       security:
       - api_key: []
+      x-amazon-apigateway-request-validator: "Validate body, query string parameters,\
+        \ and headers"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        uri: "https://pau20tt9ah.execute-api.us-west-2.amazonaws.com/Dev/post/Client"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "http"
   /post/Nurse:
     post:
       consumes:
-      - "application/json"
-      produces:
       - "application/json"
       parameters:
       - in: "body"
@@ -111,6 +153,16 @@ paths:
           description: "200 response"
       security:
       - api_key: []
+      x-amazon-apigateway-request-validator: "Validate body, query string parameters,\
+        \ and headers"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        uri: "https://pau20tt9ah.execute-api.us-west-2.amazonaws.com/Dev/post/Nurse"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "http"
 securityDefinitions:
   api_key:
     type: "apiKey"
@@ -614,4 +666,8 @@ definitions:
       Zip_Code:
         type: "string"
         description: "Client's Zipcode/PostalCode"
+x-amazon-apigateway-request-validators:
+  Validate body, query string parameters, and headers:
+    validateRequestParameters: true
+    validateRequestBody: true
 x-aws-api-id: "pau20tt9ah"
