@@ -67,8 +67,6 @@ paths:
     post:
       consumes:
       - "application/json"
-      produces:
-      - "application/json"
       parameters:
       - in: "body"
         name: "Assessment"
