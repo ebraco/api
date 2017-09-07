@@ -32,6 +32,8 @@ paths:
     post:
       consumes:
       - "application/json"
+      produces:
+      - "application/json"
       parameters:
       - in: "body"
         name: "Agency"
@@ -41,6 +43,8 @@ paths:
       responses:
         200:
           description: "200 response"
+      security:
+      - api_key: []
   /post/Assessment:
     post:
       consumes:
@@ -58,19 +62,8 @@ paths:
           description: "200 response"
         500:
           description: "500 response"
-  /post/Client:
-    post:
-      consumes:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "Client"
-        required: true
-        schema:
-          $ref: "#/definitions/Client"
-      responses:
-        200:
-          description: "200 response"
+      security:
+      - api_key: []
   /post/Child:
     post:
       consumes:
@@ -84,9 +77,28 @@ paths:
       responses:
         200:
           description: "200 response"
+      security:
+      - api_key: []
+  /post/Client:
+    post:
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Client"
+        required: true
+        schema:
+          $ref: "#/definitions/Client"
+      responses:
+        200:
+          description: "200 response"
+      security:
+      - api_key: []
   /post/Nurse:
     post:
       consumes:
+      - "application/json"
+      produces:
       - "application/json"
       parameters:
       - in: "body"
@@ -97,6 +109,8 @@ paths:
       responses:
         200:
           description: "200 response"
+      security:
+      - api_key: []
 securityDefinitions:
   api_key:
     type: "apiKey"
@@ -172,7 +186,7 @@ definitions:
         type: "string"
         description: "Source system that the data originates from "
   ArrayOfPseudonym:
-    type: "string"
+    type: "object"
   Assessment:
     type: "object"
     required:
@@ -235,13 +249,6 @@ definitions:
         type: "string"
         description: "Source system that the data originates from"
       Pseudonym_Responses:
-        type: "string"
-  PseudonymResponse:
-    type: "object"
-    properties:
-      Pseudonym:
-        type: "string"
-      Pseudonym_Response:
         type: "string"
   Client:
     type: "object"
@@ -570,18 +577,6 @@ definitions:
       Data_Source:
         type: "string"
         description: "  Source system that data originates from"
-  Pseudonym:
-    type: "object"
-    properties:
-      Pseudonym:
-        type: "string"
-      Data_Type:
-        type: "string"
-      Description:
-        type: "string"
-      Start_Date:
-        type: "string"
-        format: "date"
   Agency_Address:
     properties:
       Address_1:
@@ -619,4 +614,4 @@ definitions:
       Zip_Code:
         type: "string"
         description: "Client's Zipcode/PostalCode"
-x-aws-api-id: "vnvh24mw47"
+x-aws-api-id: "pau20tt9ah"
