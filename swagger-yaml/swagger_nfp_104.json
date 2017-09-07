@@ -698,7 +698,7 @@ definitions:
         type: "string"
       Start_Date:
         type: "string"
-        format: "full-date"
+        format: "date"
   Agency_Address:
     properties:
       Address_1:
