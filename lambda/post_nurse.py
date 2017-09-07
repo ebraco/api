@@ -31,7 +31,7 @@ def lambda_handler(event, context):
         db_name = rds_proto_config.db_name
         port = 3306
 
-    elif environment == 'dev':
+    elif environment == 'Dev':
         import rds_dev_config
         keyId  = rds_dev_config.keyId
         sKeyId  = rds_dev_config.sKeyId
