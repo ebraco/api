@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mysql --user="master" --password='NFP!2017!' --host=jdg-proto-type.ccf0v3myj6k1.us-west-2.rds.amazonaws.com --database=proto << EOF
+mysql --user="master" --password='NFP!2017!' --host=jdg-proto-type.ccf0v3myj6k1.us-west-2.rds.amazonaws.com --database=Dev << EOF
 source create_pseudonym.sql
 
 DELETE FROM pseudonym;
