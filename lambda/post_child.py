@@ -74,7 +74,7 @@ def lambda_handler(event, context):
     k = Key(bucket)
 
     #Crete a new key with id as the name of the file
-    k.key=reqid+".nurse.apigateway.json"
+    k.key=reqid+".child.apigateway.json"
 
     #Upload the file
     result = k.set_contents_from_string(rawdata)
