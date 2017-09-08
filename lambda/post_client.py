@@ -50,18 +50,19 @@ def lambda_handler(event, context):
         logger.error("ERROR: Unexpected error: Could not connect to MySql instance.")
         sys.exit()
 
-    # Validate every pseudonym
-    for pseudonym_row in event['body-json']['Pseudonym_Responses']:
+    # Validate NFP_Start_Date
+    try:
+        nfpstartdate=event['body-json']['NFP_Start_Date']
         try:
-            nfp_validate.validate_pseudonym(conn,pseudonym_row['Pseudonym'])
+            nfp_validate.validate_date(nfpstartdate)
         except nfp_validate.NFP_Exception, (instance):
             return(instance.parameter)
-
-    #i Validate assessment_date
-    try:
-        nfp_validate.validate_date(event['body-json']['Assessment_Date'])
-    except nfp_validate.NFP_Exception, (instance):
-            return(instance.parameter)
+    except: 
+        pass
+    #try:
+        #nfp_validate.validate_date(event['body-json']['Assessment_Date'])
+    #except nfp_validate.NFP_Exception, (instance):
+            #return(instance.parameter)
 
 
     #Connect to S3 with access credentials
@@ -73,7 +74,7 @@ def lambda_handler(event, context):
     k = Key(bucket)
 
     #Crete a new key with id as the name of the file
-    k.key=reqid+".assessment.apigateway.json"
+    k.key=reqid+".client.apigateway.json"
 
     #Upload the file
     result = k.set_contents_from_string(rawdata)
