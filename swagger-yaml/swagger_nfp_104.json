@@ -10,8 +10,6 @@ schemes:
 paths:
   /get/Pseudonym:
     get:
-      consumes:
-      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -19,11 +17,6 @@ paths:
         in: "query"
         required: true
         type: "string"
-      - in: "body"
-        name: "Pseudonym"
-        required: true
-        schema:
-          $ref: "#/definitions/Pseudonym"
       responses:
         200:
           description: "200 response"
