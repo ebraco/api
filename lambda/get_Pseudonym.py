@@ -1,7 +1,8 @@
 #!/usr/bin/python
 import sys
 import logging
-import rds_config
+import rds_dev_config
+import boto
 import pymysql
 import json
 
