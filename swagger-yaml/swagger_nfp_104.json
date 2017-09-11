@@ -19,6 +19,11 @@ paths:
         in: "query"
         required: true
         type: "string"
+      - in: "body"
+        name: "Pseudonym"
+        required: true
+        schema:
+          $ref: "#/definitions/Pseudonym"
       responses:
         200:
           description: "200 response"
@@ -34,15 +39,14 @@ paths:
         responses:
           default:
             statusCode: "200"
-        requestTemplates:
-          application/json: "{\"statusCode\": 200}"
-        passthroughBehavior: "when_no_match"
-        type: "mock"
+        uri: "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:312517840624:function:get_Pseudonym/invocations"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
   /post/Agency:
     post:
       consumes:
-      - "application/json"
-      produces:
       - "application/json"
       parameters:
       - in: "body"
@@ -149,8 +153,6 @@ paths:
   /post/Child:
     post:
       consumes:
-      - "application/json"
-      produces:
       - "application/json"
       parameters:
       - in: "body"
